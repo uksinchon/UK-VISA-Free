@@ -1,3 +1,4 @@
+import EmailChooser from "@/components/EmailChooser";
 export default function Footer() {
   return (
     <footer className="bg-primary-800 text-gray-400">
@@ -78,12 +79,11 @@ export default function Footer() {
                 </svg>
                 +82 2 393 1030
               </a>
-              <a href="mailto:info@ukvisa.kr" className="flex items-center gap-2 hover:text-accent transition-colors">
-                <svg className="w-4 h-4 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                info@ukvisa.kr
-              </a>
+              <EmailChooser
+                wrapperClassName="relative"
+                className="flex items-center gap-2 hover:text-accent transition-colors"
+                iconClassName="w-4 h-4"
+              />
               <p className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-accent flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.76 1.86 5.18 4.62 6.54-.21.78-.78 2.91-.9 3.36-.15.57.21.57.45.42.18-.12 2.85-1.95 4.05-2.76.59.1 1.18.15 1.78.15 5.52 0 10-3.48 10-7.71S17.52 3 12 3z"/>
