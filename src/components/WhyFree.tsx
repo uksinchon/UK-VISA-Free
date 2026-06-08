@@ -1,6 +1,6 @@
 export default function WhyFree() {
   return (
-    <section id="why-free" className="py-20 md:py-24 bg-white">
+    <section id="why-free" className="pt-10 pb-20 md:py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-12">
