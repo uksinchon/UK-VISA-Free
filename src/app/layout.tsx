@@ -71,6 +71,14 @@ export const metadata: Metadata = {
       "비자 신청부터 출국까지 100% 무료 대행. 2006년부터 20년 노하우.",
     images: ["/og-image.png"],
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180" }],
+  },
   robots: {
     index: !NOINDEX,
     follow: !NOINDEX,
