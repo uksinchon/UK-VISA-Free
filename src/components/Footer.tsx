@@ -114,7 +114,11 @@ export default function Footer() {
 
         <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <a href="/privacy" className="hover:text-accent transition-colors">개인정보 처리방침</a>
-          <span className="text-center sm:text-right">&copy; 2026 영국학생비자센터 Serviced by 영국유학센터 신촌지사. All rights reserved.</span>
+          <span className="text-center sm:text-right">
+            &copy; 2026 영국학생비자센터 Serviced by 영국유학센터 신촌지사.
+            <br className="sm:hidden" />
+            All rights reserved.
+          </span>
         </div>
       </div>
     </footer>
