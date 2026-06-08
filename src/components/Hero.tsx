@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative pt-24 pb-6 md:pt-32 md:pb-28 overflow-hidden">
+    <section className="relative pt-24 pb-10 md:pt-32 md:pb-28 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-[#1f2c4a] to-primary-700" />
       <div className="absolute inset-0 opacity-30">
@@ -98,7 +98,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-gradient-to-t from-white to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-6 md:h-32 bg-gradient-to-t from-white to-transparent" />
     </section>
   );
 }
