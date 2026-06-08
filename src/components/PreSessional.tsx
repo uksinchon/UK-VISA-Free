@@ -1,6 +1,6 @@
 export default function PreSessional() {
   return (
-    <section id="presessional" className="py-20 md:py-24 bg-gradient-to-b from-blue-50/40 to-white">
+    <section id="presessional" className="pt-10 pb-20 md:py-24 bg-gradient-to-b from-blue-50/40 to-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <span className="text-accent font-heading font-semibold text-sm tracking-wider uppercase">

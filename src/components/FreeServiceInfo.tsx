@@ -20,7 +20,7 @@ const services = [
 
 export default function FreeServiceInfo() {
   return (
-    <section id="services" className="py-20 md:py-24 bg-white">
+    <section id="services" className="pt-10 pb-20 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-14">
           <span className="text-accent font-heading font-semibold text-sm tracking-wider uppercase">

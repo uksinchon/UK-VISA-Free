@@ -45,7 +45,7 @@ export default function FreeApplicationForm() {
   return (
     <section
       id="contact"
-      className="relative py-20 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-[#1f2c4a] to-primary-700"
+      className="relative pt-10 pb-20 md:py-24 overflow-hidden bg-gradient-to-br from-primary via-[#1f2c4a] to-primary-700"
     >
       <div className="absolute inset-0 opacity-25">
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-accent/30 rounded-full blur-[120px]" />

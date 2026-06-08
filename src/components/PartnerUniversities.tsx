@@ -76,7 +76,7 @@ export default function PartnerUniversities() {
   const visible = expanded ? allPartners : allPartners.slice(0, PREVIEW_COUNT);
 
   return (
-    <section id="partners" className="py-20 md:py-24 bg-white">
+    <section id="partners" className="pt-10 pb-20 md:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <span className="text-accent font-heading font-semibold text-sm tracking-wider uppercase">
