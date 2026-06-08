@@ -35,7 +35,9 @@ export default function DIYRisk() {
             Real Cases
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gray-900">
-            학생비자, 정말 <span className="text-red-500">혼자</span> 신청해도 괜찮으실까요?
+            학생비자,
+            <br className="sm:hidden" />
+            정말 <span className="text-red-500">혼자서</span> 신청해도 괜찮으실까요?
           </h2>
           <p className="text-gray-500 mt-3 text-sm md:text-base">
             지난 20년간 저희가 직접 도움을 드렸던 사례입니다.

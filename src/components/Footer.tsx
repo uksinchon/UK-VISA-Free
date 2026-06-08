@@ -112,14 +112,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-gray-500">
-            <p>영국학생비자센터 Serviced by 영국유학센터 신촌지사</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500">
-            <a href="/privacy" className="hover:text-accent transition-colors">개인정보 처리방침</a>
-            <span>&copy; 2026 영국학생비자센터 Serviced by 영국유학센터 신촌지사. All rights reserved.</span>
-          </div>
+        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
+          <a href="/privacy" className="hover:text-accent transition-colors">개인정보 처리방침</a>
+          <span className="text-center sm:text-right">&copy; 2026 영국학생비자센터 Serviced by 영국유학센터 신촌지사. All rights reserved.</span>
         </div>
       </div>
     </footer>
