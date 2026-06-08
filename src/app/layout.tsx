@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import NaverWcs from "@/components/NaverWcs";
 import "./globals.css";
 
 // ⚙️ 설정값 — 실제 ID로 교체해 주세요
@@ -181,6 +182,9 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-gray-900 antialiased">
         {children}
+
+        {/* NAVER 전환추적 공통 스크립트 (PV) */}
+        <NaverWcs />
 
         {/* Google Analytics 4 — NEXT_PUBLIC_GA_MEASUREMENT_ID 환경변수 설정 시 활성화 */}
         {GA_MEASUREMENT_ID && (

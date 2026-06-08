@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { sendNaverLead } from "@/components/NaverWcs";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xqaqagrk";
 
@@ -31,6 +32,7 @@ export default function VisaContactForm({ visa }: Props) {
         headers: { Accept: "application/json" },
       });
       if (response.ok) {
+        sendNaverLead(); // NAVER 신청완료(lead) 전환 전송
         setSubmitted(true);
       } else {
         const data = await response.json().catch(() => ({}));
