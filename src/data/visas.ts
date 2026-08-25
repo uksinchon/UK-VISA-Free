@@ -18,7 +18,7 @@ export type VisaDetail = {
   documents: string[];
   // 비자 신청비 & 기타 정부 납부 비용
   fees: { label: string; amount: string; note?: string }[];
-  // 가족 동반 가능 여부 + 설명 (+ 선택적 1인당 대행 가격)
+  // 가족 동반 가능 여부 + 설명 (+ 선택적 1인당 지원 가격)
   family: {
     allowed: boolean;
     desc: string;
@@ -30,7 +30,7 @@ export type VisaDetail = {
   notes: string[];
   // 표 형식 비자 정보 (선택)
   infoTable?: { label: string; value: string }[];
-  // Check Point — 특별 강조 박스 (거절률 경고 + 선택적 발급 실적)
+  // Check Point — 특별 강조 박스 (거절률 경고 + 선택적 발급 지원 실적)
   checkPoint?: {
     warning: string;
     experience?: string;
@@ -55,9 +55,9 @@ export const visas: Record<string, VisaDetail> = {
     category: "United Kingdom",
     enTitle: "STUDENT VISA",
     enSubtitle: "Non-Partner University",
-    title: "비파트너 대학 학생비자 대행",
+    title: "비파트너 대학 학생비자 신청 지원",
     tagline:
-      "영국학생비자센터 파트너십이 아닌 대학에서 오퍼를 받으신 분을 위한 학생비자 대행 서비스",
+      "영국학생비자 지원센터 파트너십이 아닌 대학에서 오퍼를 받으신 분을 위한 학생비자 신청 지원 서비스",
     price: "₩165,000~",
     tag: "BEST",
     overview: [
@@ -84,7 +84,7 @@ export const visas: Record<string, VisaDetail> = {
     ],
     highlight: {
       title: "이런 분께 추천드립니다",
-      desc: "영국학생비자센터의 파트너십이 아닌 대학에서 오퍼를 받으신 학생분이라면 본 서비스로 안전하게 비자 발급을 진행하실 수 있습니다.",
+      desc: "영국학생비자 지원센터의 파트너십이 아닌 대학에서 오퍼를 받으신 학생분이라면 본 서비스로 안전하게 비자 발급을 진행하실 수 있습니다.",
     },
     documents: [
       "여권 (만료일 6개월 이상)",
@@ -103,7 +103,7 @@ export const visas: Record<string, VisaDetail> = {
         note: "코스 기간만큼 일시 납부",
       },
       { label: "결핵 검사", amount: "약 9~12만원", note: "지정 병원 별도" },
-      { label: "비자 대행 수수료", amount: "₩165,000~", note: "당사 서비스" },
+      { label: "비자 신청 지원 서비스료", amount: "₩165,000~", note: "당사 서비스" },
     ],
     family: {
       allowed: true,
@@ -117,7 +117,7 @@ export const visas: Record<string, VisaDetail> = {
         title: "서류 준비 안내",
         desc: "결핵검사·재정증명·번역 등 단계별 안내",
       },
-      { step: "04", title: "비자 신청서 작성", desc: "GOV.UK 온라인 신청서 작성 대행" },
+      { step: "04", title: "비자 신청서 작성", desc: "GOV.UK 온라인 신청서 작성 지원 (제출은 본인)" },
       {
         step: "05",
         title: "비자센터 방문 안내",
@@ -132,7 +132,7 @@ export const visas: Record<string, VisaDetail> = {
     notes: [
       "위 비용은 영국 정부 정책에 따라 변동될 수 있습니다.",
       "거절 이력이 있으신 경우 상담 시 별도로 안내드립니다.",
-      "Pathway College(패스웨이) 경유 진학자는 대행 가능 여부 별도 확인 필요.",
+      "Pathway College(패스웨이) 경유 진학자는 지원 가능 여부 별도 확인 필요.",
     ],
     infoTable: [
       { label: "비자 종류", value: "Student Visa (구 Tier 4)" },
@@ -155,7 +155,7 @@ export const visas: Record<string, VisaDetail> = {
     enSubtitle: "Standard Visitor (Academic)",
     title: "방문교수 비자 (Academic Visitor)",
     tagline:
-      "영국 대학·연구소를 방문하는 교수·연구원·학자를 위한 단기 방문 비자 대행",
+      "영국 대학·연구소를 방문하는 교수·연구원·학자를 위한 단기 방문 비자 신청 지원",
     price: "₩550,000~",
     tag: "NEW",
     overview: [
@@ -211,7 +211,7 @@ export const visas: Record<string, VisaDetail> = {
         note: "Standard Visitor 카테고리 — NHS 무상 이용 불가, 개인보험 권장",
       },
       { label: "결핵 검사", amount: "약 9~12만원", note: "6개월 이상 체류 예정 시" },
-      { label: "비자 대행 수수료", amount: "₩550,000~", note: "당사 서비스" },
+      { label: "비자 신청 지원 서비스료", amount: "₩550,000~", note: "당사 서비스" },
     ],
     family: {
       allowed: false,
@@ -234,7 +234,7 @@ export const visas: Record<string, VisaDetail> = {
         title: "서류 준비",
         desc: "재직·안식년/해외연수 승인서, 학력·연구 경력, 재정증명 안내",
       },
-      { step: "04", title: "비자 신청서 작성", desc: "온라인 신청서 작성 대행" },
+      { step: "04", title: "비자 신청서 작성", desc: "온라인 신청서 작성 지원 (제출은 본인)" },
       {
         step: "05",
         title: "비자센터 방문",
@@ -316,7 +316,7 @@ export const visas: Record<string, VisaDetail> = {
         note: "체류 기간만큼 일시 납부",
       },
       { label: "결핵 검사", amount: "약 9~12만원" },
-      { label: "비자 대행 수수료", amount: "₩440,000~", note: "당사 서비스" },
+      { label: "비자 신청 지원 서비스료", amount: "₩440,000~", note: "당사 서비스" },
     ],
     family: {
       allowed: true,
@@ -339,7 +339,7 @@ export const visas: Record<string, VisaDetail> = {
         title: "서류 준비",
         desc: "재정·결핵검사·학력 증빙 안내",
       },
-      { step: "04", title: "비자 신청서 작성", desc: "GOV.UK 온라인 신청서 작성 대행" },
+      { step: "04", title: "비자 신청서 작성", desc: "GOV.UK 온라인 신청서 작성 지원 (제출은 본인)" },
       {
         step: "05",
         title: "비자센터 방문",

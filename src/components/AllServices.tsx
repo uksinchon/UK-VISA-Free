@@ -58,10 +58,10 @@ export default function AllServices() {
             Premium Visa Agency
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gray-900">
-            영국유학센터 신촌지사 유료 비자 대행
+            영국유학센터 신촌지사 유료 비자 지원
           </h2>
           <p className="text-gray-500 mt-3">
-            6종 비자를 전문 매니저가 1:1로 책임지고 대행합니다 (₩165,000부터)
+            6종 비자를 전문 매니저가 1:1로 신청을 지원합니다 (₩165,000부터)
           </p>
         </div>
 

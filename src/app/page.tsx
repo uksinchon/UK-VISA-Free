@@ -11,6 +11,7 @@ import PartnerUniversities from "@/components/PartnerUniversities";
 import PreSessional from "@/components/PreSessional";
 import Orientation from "@/components/Orientation";
 import FreeApplicationForm from "@/components/FreeApplicationForm";
+import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
     <>
       <Header />
       <main>
-        {/* 1. Hero - 영국학생비자 무료 대행 */}
+        {/* 1. Hero - 영국학생비자 무료 지원 */}
         <Hero />
 
         {/* 2. 왜 무료인가요? (P0 - 가장 치명적) */}
@@ -53,6 +54,9 @@ export default function Home() {
 
         {/* 12. 무료 비자 신청 폼 + 기타 비자 진입점 */}
         <FreeApplicationForm />
+
+        {/* 투명성 고지 (민간 유학원 명시) */}
+        <Disclaimer className="pb-12" />
       </main>
       <Footer />
     </>

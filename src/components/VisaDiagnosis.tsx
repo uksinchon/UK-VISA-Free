@@ -63,8 +63,8 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Parent of a Child Student Visa (가디언 비자)",
-      desc: "자녀 동반 가디언으로 영국에 입국하시는 경우, 가디언 비자 대행이 필요합니다.",
-      cta: "유료 대행 상담 신청",
+      desc: "자녀 동반 가디언으로 영국에 입국하시는 경우, 가디언 비자 지원이 필요합니다.",
+      cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
     };
@@ -74,8 +74,8 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Academic Visitor Visa (방문교수)",
-      desc: "방문 교수 / 학자로 입국하시는 경우, 영국유학센터 신촌지사의 유료 대행으로 도와드립니다.",
-      cta: "유료 대행 상담 신청",
+      desc: "방문 교수 / 학자로 입국하시는 경우, 영국유학센터 신촌지사의 유료 지원으로 도와드립니다.",
+      cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
     };
@@ -85,8 +85,8 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Temporary Work - GAE Visa (단기취업)",
-      desc: "Government Authorised Exchange 비자 신청은 신촌지사의 유료 대행 서비스로 진행됩니다.",
-      cta: "유료 대행 상담 신청",
+      desc: "Government Authorised Exchange 비자 신청은 신촌지사의 유료 지원 서비스로 진행됩니다.",
+      cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
     };
@@ -96,8 +96,8 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Child Student Visa (아동 학생비자)",
-      desc: "만 4~17세 아동 학생비자는 보호자 동반 등 검토 사항이 많아 유료 대행을 권장합니다.",
-      cta: "유료 대행 상담 신청",
+      desc: "만 4~17세 아동 학생비자는 보호자 동반 등 검토 사항이 많아 유료 지원을 권장합니다.",
+      cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
     };
@@ -107,8 +107,8 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Dependant Visa (동반 가족)",
-      desc: "배우자·자녀 동반 비자는 추가 서류와 재정 입증이 필요해 유료 대행으로 진행됩니다.",
-      cta: "유료 대행 상담 신청",
+      desc: "배우자·자녀 동반 비자는 추가 서류와 재정 입증이 필요해 유료 지원으로 진행됩니다.",
+      cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
     };
@@ -129,8 +129,8 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Student Visa (비파트너 대학)",
-      desc: "파트너십이 아닌 대학에서 오퍼를 받으신 경우 유료 대행 서비스로 진행됩니다.",
-      cta: "유료 대행 상담 신청",
+      desc: "파트너십이 아닌 대학에서 오퍼를 받으신 경우 유료 지원 서비스로 진행됩니다.",
+      cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
     };

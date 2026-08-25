@@ -1,7 +1,7 @@
 const benefits = [
   {
     icon: "📋",
-    title: "CAS 컨펌 대행",
+    title: "CAS 컨펌 지원",
     desc: "영국 대학 CAS 발급 신청 및 컨펌까지 전 과정 무료 지원",
   },
   {
@@ -22,7 +22,7 @@ const benefits = [
   {
     icon: "🏠",
     title: "기숙사 신청 지원",
-    desc: "온캠퍼스 기숙사 신청 안내 및 대행",
+    desc: "온캠퍼스 기숙사 신청 안내 및 지원",
   },
   {
     icon: "🤝",

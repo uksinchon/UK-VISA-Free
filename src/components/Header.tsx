@@ -30,8 +30,11 @@ export default function Header() {
               <span className="text-white font-heading font-bold text-lg">UK</span>
             </div>
             <div className="leading-tight">
-              <span className="text-white font-heading font-bold text-base md:text-lg tracking-tight">
-                영국학생비자센터
+              <span className="block text-white font-heading font-bold text-base md:text-lg tracking-tight">
+                영국학생비자 지원센터
+              </span>
+              <span className="block text-[10px] md:text-xs text-gray-400 tracking-tight">
+                민간 유학 수속 전문 기관
               </span>
             </div>
           </a>
@@ -74,7 +77,7 @@ export default function Header() {
                 <div className="absolute right-0 top-full pt-2 w-56">
                   <div className="bg-white rounded-xl shadow-xl border border-gray-100 py-2">
                     <div className="px-4 py-2 text-[10px] font-bold text-gray-400 tracking-wider uppercase border-b border-gray-100">
-                      유료 비자 대행
+                      유료 비자 지원
                     </div>
                     {otherVisas.map((v) => (
                       <a
@@ -151,7 +154,7 @@ export default function Header() {
             ))}
             <div className="border-t border-white/10 mt-2 pt-2">
               <p className="px-4 py-2 text-[10px] font-bold text-gray-400 tracking-wider uppercase">
-                기타 비자 (유료 대행)
+                기타 비자 (유료 지원)
               </p>
               {otherVisas.map((v) => (
                 <a

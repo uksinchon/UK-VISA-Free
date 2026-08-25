@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
 import VisaContactForm from "@/components/VisaContactForm";
 import { visas, visaSlugs } from "@/data/visas";
@@ -18,12 +19,12 @@ export function generateMetadata({
   if (!visa) return { title: "Not Found" };
   return {
     title: visa.title,
-    description: `${visa.tagline} · 대행 수수료 ${visa.price} · 영국학생비자센터 by 영국유학센터 신촌지사`,
+    description: `${visa.tagline} · 서비스 이용료 ${visa.price} · 영국학생비자 지원센터 by 영국유학센터 신촌지사`,
     alternates: {
       canonical: `/visa/${visa.slug}`,
     },
     openGraph: {
-      title: `${visa.title} | 영국학생비자센터`,
+      title: `${visa.title} | 영국학생비자 지원센터`,
       description: visa.tagline,
       url: `/visa/${visa.slug}`,
       type: "article",
@@ -71,7 +72,7 @@ export default function VisaDetailPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: "유료 비자 대행",
+            name: "유료 비자 지원",
             item: `${SITE_URL}/visa-services`,
           },
           {
@@ -133,7 +134,7 @@ export default function VisaDetailPage({
 
             <div className="flex flex-wrap items-center justify-center gap-3">
               <span className="bg-accent text-white font-bold text-base md:text-lg px-5 py-2.5 rounded-lg">
-                대행 수수료 {visa.price}
+                서비스 이용료 {visa.price}
               </span>
               <a
                 href="#contact"
@@ -231,7 +232,7 @@ export default function VisaDetailPage({
               {visa.checkPoint.experience && (
                 <div className="bg-gradient-to-br from-primary-700 to-primary rounded-2xl p-7 md:p-9 text-white">
                   <div className="text-xs font-bold tracking-wider text-accent uppercase mb-3">
-                    영국학생비자센터 발급 실적
+                    영국학생비자 지원센터 발급 지원 실적
                   </div>
                   <p className="text-sm md:text-base text-gray-100 leading-relaxed mb-5">
                     {visa.checkPoint.experience}
@@ -414,7 +415,7 @@ export default function VisaDetailPage({
                 Documents
               </span>
               <h2 className="text-2xl md:text-3xl font-bold mt-2 text-gray-900">
-                공식 제출 서류
+                필수 제출 서류
               </h2>
               <p className="text-gray-500 mt-3 text-sm">
                 아래 서류 중 일부는 영문 번역·공증이 필요합니다.
@@ -524,10 +525,10 @@ export default function VisaDetailPage({
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
-                    가족 동반 대행 1인당 {visa.family.pricePerPerson}
+                    가족 동반 지원 1인당 {visa.family.pricePerPerson}
                   </span>
                   <span className="text-xs text-gray-500">
-                    동반자 1인당 별도 신청 · 대행 수수료 추가 적용
+                    동반자 1인당 별도 신청 · 서비스 이용료 추가 적용
                   </span>
                 </div>
               )}
@@ -543,7 +544,7 @@ export default function VisaDetailPage({
                 Process
               </span>
               <h2 className="text-2xl md:text-3xl font-bold mt-2 text-gray-900">
-                비자 대행 신청 및 진행 절차
+                비자 신청 지원 절차
               </h2>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -603,14 +604,16 @@ export default function VisaDetailPage({
               20년 노하우, 99% 이상의 합격률
             </h2>
             <p className="text-gray-500 text-sm md:text-base max-w-xl mx-auto">
-              영국학생비자센터는 2006년부터 1,000명+ 학생의 비자를 성공적으로
-              발급해왔습니다. {visa.title}도 안전하게 모시겠습니다.
+              영국학생비자 지원센터는 2006년부터 1,000명+ 학생의 비자를 성공적으로
+              발급받으실 수 있도록 도와왔습니다. {visa.title}도 안전하게 돕겠습니다.
             </p>
           </div>
         </section>
 
         {/* Contact Form */}
         <VisaContactForm visa={{ title: visa.title, slug: visa.slug, price: visa.price }} />
+
+        <Disclaimer className="pb-12" />
       </main>
       <Footer />
     </>

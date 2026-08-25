@@ -86,7 +86,7 @@ export default function PartnerUniversities() {
             서비스 이용 가능 파트너 대학
           </h2>
           <p className="text-gray-500 mt-3">
-            아래 대학에 합격하셨다면 학생비자 무료 대행 서비스를 이용하실 수 있습니다
+            아래 대학에 합격하셨다면 학생비자 무료 지원 서비스를 이용하실 수 있습니다
           </p>
         </div>
 

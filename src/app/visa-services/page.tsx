@@ -1,11 +1,12 @@
 import Header from "@/components/Header";
+import Disclaimer from "@/components/Disclaimer";
 import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "유료 비자 대행 서비스 | 영국학생비자센터",
+  title: "유료 비자 지원 서비스 | 영국학생비자 지원센터",
   description:
-    "비파트너 대학 학생비자, 방문교수, GAE 단기취업 등 3종 영국비자 유료 대행 서비스. ₩165,000부터 시작.",
+    "비파트너 대학 학생비자, 방문교수, GAE 단기취업 등 3종 영국비자 유료 지원 서비스. ₩165,000부터 시작.",
 };
 
 const visas = [
@@ -13,7 +14,7 @@ const visas = [
     slug: "non-partner",
     title: "비파트너 대학 학생비자",
     en: "Student Visa (Non-Partner)",
-    desc: "영국학생비자센터 파트너십이 아닌 대학에서 오퍼를 받으신 분을 위한 학생비자 대행 서비스",
+    desc: "영국학생비자 지원센터 파트너십이 아닌 대학에서 오퍼를 받으신 분을 위한 학생비자 신청 지원 서비스",
     price: "₩165,000~",
     tag: "BEST",
   },
@@ -48,15 +49,15 @@ export default function VisaServicesHub() {
           </div>
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
             <span className="inline-block bg-white/10 text-white text-xs font-bold tracking-wider px-4 py-1.5 rounded-full border border-white/20 mb-5">
-              PREMIUM VISA AGENCY
+              PREMIUM VISA SUPPORT
             </span>
             <h1 className="text-3xl md:text-5xl font-heading font-extrabold text-white mb-5">
-              그 외 영국비자 <span className="text-accent">유료 대행 서비스</span>
+              그 외 영국비자 <span className="text-accent">유료 지원 서비스</span>
             </h1>
             <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
               파트너 대학 무료 학생비자 외
               <br />
-              3종의 영국비자를 전문 매니저가 1:1로 책임지고 대행합니다.
+              3종의 영국비자를 전문 매니저가 1:1로 신청을 지원합니다.
               <br />
               가격은 ₩165,000부터 시작합니다.
             </p>
@@ -72,7 +73,7 @@ export default function VisaServicesHub() {
                 href="/"
                 className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
               >
-                ← 학생비자 무료 대행 보기
+                ← 학생비자 무료 지원 보기
               </a>
             </div>
           </div>
@@ -137,12 +138,12 @@ export default function VisaServicesHub() {
                   파트너십 대학에서 합격하셨나요?
                 </p>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  영국학생비자센터 파트너십 대학 학생은{" "}
+                  영국학생비자 지원센터 파트너십 대학 학생은{" "}
                   <a
                     href="/"
                     className="text-accent font-bold underline underline-offset-2"
                   >
-                    학생비자 100% 무료 대행
+                    학생비자 100% 무료 지원
                   </a>
                   을 받으실 수 있습니다.
                 </p>
@@ -155,7 +156,7 @@ export default function VisaServicesHub() {
         <section id="contact" className="py-16 md:py-20 bg-white">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-              유료 비자 대행 상담 신청
+              유료 비자 지원 상담 신청
             </h2>
             <p className="text-gray-500 mb-8 text-sm">
               어떤 비자가 필요한지 모르겠다면, 일단 문의해 주세요.
@@ -193,6 +194,8 @@ export default function VisaServicesHub() {
             </div>
           </div>
         </section>
+
+        <Disclaimer className="pb-12" />
       </main>
       <Footer />
     </>

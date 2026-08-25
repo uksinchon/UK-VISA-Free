@@ -77,13 +77,13 @@ export default function Eligibility() {
             <div className="mt-5 pt-5 border-t border-gray-100">
               <p className="text-xs text-gray-500 leading-relaxed">
                 위 조건에 해당하시거나, 학생비자 외 다른 영국비자가 필요하시면
-                유료 대행 서비스를 이용하실 수 있습니다.
+                유료 지원 서비스를 이용하실 수 있습니다.
               </p>
               <a
                 href="/visa-services"
                 className="block mt-3 text-center text-sm font-semibold text-accent hover:text-accent-dark transition-colors"
               >
-                유료 비자 대행 보러가기 →
+                유료 비자 지원 보러가기 →
               </a>
             </div>
           </div>

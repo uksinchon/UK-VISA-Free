@@ -23,7 +23,7 @@ export default function WhyFree() {
           <p className="text-gray-700 mt-4 leading-relaxed">
             따라서{" "}
             <strong className="text-gray-900">
-              학생분께서 별도로 부담하시는 비자대행 비용은 없습니다.
+              학생분께서 별도로 부담하시는 비자 지원 서비스 이용료는 없습니다.
             </strong>
           </p>
 
@@ -48,7 +48,7 @@ export default function WhyFree() {
                 <li className="flex items-start gap-2.5">
                   <span className="text-accent flex-shrink-0 mt-0.5">✓</span>
                   <span className="text-sm md:text-base">
-                    <strong>비자 전 과정 대행</strong>
+                    <strong>비자 신청 준비·서류 검토 지원</strong>
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -83,7 +83,7 @@ export default function WhyFree() {
               <span className="text-3xl md:text-4xl">원</span>
             </div>
             <p className="text-sm text-gray-500 mt-3">
-              대행 수수료 · 상담료 · 컨설팅비 모두
+              서비스 이용료 · 상담료 · 컨설팅비 모두
             </p>
             <p className="text-xs text-gray-400 mt-1">
               영국 정부 납부 비자 신청료(IHS 등)는 신청자 본인 부담
