@@ -71,7 +71,7 @@ export default function DIYRisk() {
                 href="#contact"
                 className="md:flex-shrink-0 inline-flex items-center justify-center gap-1.5 bg-accent/10 hover:bg-accent group-hover:bg-accent text-accent group-hover:text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-lg transition-all"
               >
-                저희가 대신 처리합니다 →
+                저희가 준비를 도와드립니다 →
               </a>
             </div>
           ))}

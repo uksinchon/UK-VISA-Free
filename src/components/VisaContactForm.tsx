@@ -67,7 +67,7 @@ export default function VisaContactForm({ visa }: Props) {
             {visa.title} 상담 신청
           </h2>
           <p className="text-sm md:text-base text-gray-300">
-            대행 수수료{" "}
+            서비스 이용료{" "}
             <span className="text-accent font-bold">{visa.price}</span>{" "}
             · 전문 매니저가 1:1로 안내해 드립니다
           </p>

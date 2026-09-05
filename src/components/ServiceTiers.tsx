@@ -5,7 +5,7 @@ const rows = [
   { label: "CAS 컨펌 / 비자 스폰서 레터", free: true, premium: true },
   { label: "서류 검수 (Document Review)", free: true, premium: true },
   { label: "온라인 비자 신청서 작성", free: true, premium: true },
-  { label: "비자 번역 대행", free: "학생 한정", premium: true },
+  { label: "비자 번역 지원", free: "학생 한정", premium: true },
   { label: "프리세셔널 코스 등록", free: true, premium: "옵션" },
   { label: "오리엔테이션 / 출국 준비", free: true, premium: "옵션" },
   { label: "전담 매니저 1:1 관리", free: "—", premium: true },
@@ -110,7 +110,7 @@ export default function ServiceTiers() {
                   📚 무료 (파트너십 학생)
                 </th>
                 <th className="text-center text-xs font-bold uppercase tracking-wider text-accent py-4 px-6 bg-accent/5">
-                  💎 프리미엄 (유료 대행)
+                  💎 프리미엄 (유료 지원)
                 </th>
               </tr>
             </thead>

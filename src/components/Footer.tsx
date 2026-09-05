@@ -11,18 +11,20 @@ export default function Footer() {
                 <span className="text-white font-heading font-bold text-xs">UK</span>
               </div>
               <span className="text-white font-heading font-bold">
-                영국학생비자센터
+                영국학생비자 지원센터
               </span>
             </div>
             <p className="text-sm leading-relaxed">
-              영국학생비자센터
+              영국학생비자 지원센터
               <br />
               <span className="text-xs text-gray-500">
                 Serviced by 영국유학센터 신촌지사
               </span>
             </p>
             <p className="text-xs text-gray-500 mt-3 leading-relaxed">
-              British Council 공인 에이전트
+              민간 유학 수속 전문 기관
+              <br />
+              British Council 인증 교육 에이전트
               <br />
               2006년부터 20년 · 40여 개 대학 공식 파트너
             </p>
@@ -50,11 +52,11 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* 기타 비자 대행 - 강조 박스 */}
+          {/* 기타 비자 지원 - 강조 박스 */}
           <div className="border-2 border-accent/30 hover:border-accent/60 rounded-xl p-4 bg-accent/5 transition-colors">
             <h4 className="text-accent font-bold text-sm mb-3 flex items-center gap-1.5">
               <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
-              기타 비자 대행
+              기타 비자 지원
             </h4>
             <div className="space-y-2 text-sm">
               <a href="/visa/non-partner" className="block hover:text-accent transition-colors">
@@ -112,10 +114,19 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
+        {/* 법적 고지 (Google Ads 정책 · 투명성) */}
+        <div className="border-t border-white/10 mt-10 pt-6">
+          <p className="text-xs text-gray-500 leading-relaxed">
+            본 유학원은 영국 정부, 이민국(UKVI) 또는 공식 비자 신청 센터(VFS Global)와
+            관련이 없는 <span className="text-gray-400 font-semibold">민간 유학 수속 전문 기관</span>입니다.
+            비자 발급의 최종 결정권은 영국 이민국에 있으며, 당사는 비자 신청 서류 준비 및 자문 서비스를 제공합니다.
+          </p>
+        </div>
+
+        <div className="border-t border-white/10 mt-6 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
           <a href="/privacy" className="hover:text-accent transition-colors">개인정보 처리방침</a>
           <span className="text-center sm:text-right">
-            &copy; 2026 영국학생비자센터 Serviced by 영국유학센터 신촌지사.
+            &copy; 2026 영국학생비자 지원센터 Serviced by 영국유학센터 신촌지사.
             <br className="sm:hidden" />
             All rights reserved.
           </span>

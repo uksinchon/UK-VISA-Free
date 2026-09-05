@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "컬러 팔레트 비교 | 영국학생비자센터",
+  title: "컬러 팔레트 비교 | 영국학생비자 지원센터",
   description: "현재 + 3가지 대안 컬러 팔레트 비교",
 };
 
@@ -169,7 +169,7 @@ function Mockup({ p }: { p: Palette }) {
           >
             UK
           </div>
-          <span className="text-white font-bold text-sm">영국학생비자센터</span>
+          <span className="text-white font-bold text-sm">영국학생비자 지원센터</span>
         </div>
         <div
           className="text-[11px] font-bold px-3 py-1 rounded"
@@ -256,7 +256,7 @@ function Mockup({ p }: { p: Palette }) {
             </div>
             <div className="text-sm font-bold">전 과정 풀 서비스</div>
             <div className="text-[10px] mt-2 opacity-80">
-              ✓ 비자 전 과정 대행<br />
+              ✓ 비자 신청 준비·서류 검토 지원<br />
               ✓ 20년 전문성<br />
               ✓ 40개 대학 직접 채널
             </div>
@@ -279,14 +279,14 @@ function Mockup({ p }: { p: Palette }) {
               0원
             </div>
             <div className="text-[10px] mt-1 text-gray-500">
-              대행 수수료 모두
+              서비스 이용료 모두
             </div>
           </div>
         </div>
 
         {/* 서비스 카드 미니 (3개) */}
         <div className="grid grid-cols-3 gap-2 mt-4">
-          {["01\n비자 상담", "02\nCAS 대행", "03\n신청서 작성"].map((s, i) => {
+          {["01\n비자 상담", "02\nCAS 지원", "03\n신청서 작성"].map((s, i) => {
             const [num, ...title] = s.split("\n");
             return (
               <div
@@ -488,7 +488,7 @@ export default function ColorsPage() {
           </div>
           <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-3">
             제 의견: <span className="text-blue-700">B. Oxford Blue + Heritage Gold</span>가
-            영국학생비자센터에 가장 적합합니다.
+            영국학생비자 지원센터에 가장 적합합니다.
           </h2>
           <ul className="space-y-2 text-sm text-gray-700 leading-relaxed">
             <li>

@@ -62,7 +62,7 @@ export default function FreeApplicationForm() {
             지금 무료 비자 지원 신청하기
           </h2>
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-sm text-gray-300">
-            <span>✓ 대행 수수료 0원</span>
+            <span>✓ 서비스 이용료 0원</span>
             <span>✓ 비자부터 출국까지 원스톱</span>
             <span>✓ British Council 공인</span>
           </div>

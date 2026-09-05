@@ -8,7 +8,7 @@ const steps = [
   {
     step: "02",
     title: "서류 준비",
-    desc: "필수 서류 체크리스트 제공. 서류 작성 및 번역을 대행합니다.",
+    desc: "필수 서류 체크리스트 제공. 서류 작성 및 번역을 지원합니다.",
     icon: "📋",
   },
   {
@@ -40,7 +40,7 @@ export default function Process() {
             Process
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gray-900">
-            비자 대행 절차
+            비자 신청 지원 절차
           </h2>
           <p className="text-gray-500 mt-3">
             상담부터 발급까지, 5단계로 간단하게 진행됩니다

@@ -55,8 +55,8 @@ export default function PreSessional() {
           {/* CTA */}
           <div className="bg-blue-50/70 border border-blue-100 rounded-xl p-5 mt-6">
             <p className="text-sm text-gray-700 leading-relaxed">
-              <strong>프리세셔널 등록</strong>도 학생비자 무료 대행 서비스에
-              포함됩니다. 입학 전 사전어학 과정 신청을 무료로 대행해
+              <strong>프리세셔널 등록</strong>도 학생비자 무료 지원 서비스에
+              포함됩니다. 입학 전 사전어학 과정 신청을 무료로 지원해
               드립니다.
             </p>
             <a

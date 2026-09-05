@@ -3,9 +3,9 @@ import Footer from "@/components/Footer";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "개인정보 처리방침 | 영국학생비자센터",
+  title: "개인정보 처리방침 | 영국학생비자 지원센터",
   description:
-    "영국학생비자센터(ukvisa.kr) 개인정보 처리방침. 영국유학센터 신촌지사가 운영하는 영국 학생비자 무료 대행 서비스의 개인정보 보호 정책입니다.",
+    "영국학생비자 지원센터(ukvisa.kr) 개인정보 처리방침. 영국유학센터 신촌지사가 운영하는 영국 학생비자 무료 지원 서비스의 개인정보 보호 정책입니다.",
 };
 
 const internalRetention: [string, string, string][] = [
@@ -41,7 +41,7 @@ const legalRetention: [string, string, string][] = [
 const thirdParty: [string, string, string, string][] = [
   [
     "영국유학센터 강남본사",
-    "파트너 대학 학생비자 무료 대행 수속 연계",
+    "파트너 대학 학생비자 무료 지원 수속 연계",
     "성명, 생년월일, 연락처, 이메일, 합격 대학명, 오퍼 타입, 코스 정보",
     "서비스의 제공 목적이 달성된 후 파기",
   ],
@@ -68,19 +68,19 @@ const thirdParty: [string, string, string, string][] = [
 const trustees: [string, string, string][] = [
   [
     "한국유학출장여행보험센터",
-    "유학생 보험 신청 대행",
+    "유학생 보험 신청 지원",
     "회원탈퇴 또는 위탁계약 종료 시까지",
   ],
   [
     "어시스트카드",
-    "유학생 보험 신청 대행",
+    "유학생 보험 신청 지원",
     "회원탈퇴 또는 위탁계약 종료 시까지",
   ],
 ];
 
 const purposes = [
-  "영국 학생비자 무료 대행 자격 확인 및 안내(파트너 대학 합격자 대상)",
-  "영국 학생비자 유료 대행 서비스(16.5만원~) 제공",
+  "영국 학생비자 무료 지원 자격 확인 및 안내(파트너 대학 합격자 대상)",
+  "영국 학생비자 유료 지원 서비스(16.5만원~) 제공",
   "영국 학생비자 상담 및 회사 서비스 정보 제공",
   "회원 및 신청자 관리",
   "만 14세 미만 아동의 개인정보 처리 시 법정대리인의 동의 여부 확인",
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
               개인정보 처리방침
             </h1>
             <p className="text-sm text-gray-300">
-              영국학생비자센터(ukvisa.kr) · 영국유학센터 신촌지사
+              영국학생비자 지원센터(ukvisa.kr) · 영국유학센터 신촌지사
             </p>
           </div>
         </section>
@@ -172,7 +172,7 @@ export default function PrivacyPage() {
               원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.
             </p>
             <p className="mt-2">
-              본 방침은 회사가 운영하는 영국학생비자 전문 안내·대행 서비스 사이트{" "}
+              본 방침은 회사가 운영하는 영국학생비자 전문 안내·지원 서비스 사이트{" "}
               <a
                 href="https://ukvisa.kr"
                 className="text-accent font-semibold hover:underline"
@@ -294,10 +294,10 @@ export default function PrivacyPage() {
           </h3>
           <ul className="list-disc pl-6 text-sm space-y-1.5">
             <li>
-              <strong>무료 비자 대행 신청:</strong> 성명, 연락처, 이메일, 합격 대학명(university), 오퍼 타입(offer_type: conditional / unconditional), 문의 내용(message)
+              <strong>무료 비자 지원 신청:</strong> 성명, 연락처, 이메일, 합격 대학명(university), 오퍼 타입(offer_type: conditional / unconditional), 문의 내용(message)
             </li>
             <li>
-              <strong>유료 비자 대행 / 상담 신청:</strong> 성명, 연락처, 이메일, 합격 대학명, 코스명, 입학 시기, 문의 내용
+              <strong>유료 비자 지원 / 상담 신청:</strong> 성명, 연락처, 이메일, 합격 대학명, 코스명, 입학 시기, 문의 내용
             </li>
           </ul>
 
@@ -320,7 +320,7 @@ export default function PrivacyPage() {
             6-3. 비자 수속 서비스 진행 단계에서 수집되는 정보
           </h3>
           <p className="text-sm mb-2 text-gray-600">
-            영국 학생비자 신청 대행 진행 시, 비자 신청에 필요한 다음 서류를 수집합니다.
+            영국 학생비자 신청 지원 진행 시, 비자 신청에 필요한 다음 서류를 수집합니다.
           </p>
           <ul className="list-disc pl-6 text-sm space-y-1.5">
             <li>

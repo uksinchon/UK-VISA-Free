@@ -2,17 +2,17 @@ const rows = [
   {
     step: "Step 1",
     students: ["CAS 정보 전달"],
-    us: ["대학별 CAS 신청절차 검토 및 신청대행", "대학과 컨펌"],
+    us: ["대학별 CAS 신청절차 검토 및 신청 지원", "대학과 컨펌"],
   },
   {
     step: "Step 2",
     students: ["여권 사진 전달"],
-    us: ["결핵검사·재정증명 가이드", "비자 신청서 작성"],
+    us: ["결핵검사·재정증명 가이드", "비자 신청서 작성 지원"],
   },
   {
     step: "Step 3",
     students: ["비자비 결제"],
-    us: ["비자센터 예약", "준비물 안내"],
+    us: ["비자센터 예약 안내", "준비물 안내"],
   },
   {
     step: "Step 4",
@@ -37,7 +37,7 @@ export default function SimpleProcess() {
             우리는 <span className="text-accent">전부</span>
           </h2>
           <p className="text-gray-500 mt-3 text-sm md:text-base">
-            학생이 직접 하실 일은 5가지 뿐. 나머지 모든 절차는 저희가 처리합니다.
+            학생이 직접 하실 일은 5가지 뿐. 나머지 절차는 저희가 안내·검토해 드립니다.
           </p>
         </div>
 
@@ -102,7 +102,7 @@ export default function SimpleProcess() {
               <p className="text-sm md:text-base">
                 <span className="font-bold">학생이 하실 일은 단 5가지.</span>{" "}
                 <span className="text-gray-300">
-                  나머지 절차는 저희가 처리합니다.
+                  나머지 절차는 저희가 안내·검토해 드립니다.
                 </span>
               </p>
             </div>

@@ -13,15 +13,15 @@ const NOINDEX = process.env.NEXT_PUBLIC_NOINDEX === "true"; // 미리보기·스
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "영국학생비자센터 | 영국학생비자 무료지원서비스",
-    template: "%s | 영국학생비자센터",
+    default: "영국학생비자 지원센터 | 영국학생비자 무료지원서비스",
+    template: "%s | 영국학생비자 지원센터",
   },
   description:
     "영국 대학 합격 후 비자 신청, 프리세셔널 등록, 출국 준비까지 모든 과정을 무료로 도와드립니다. British Council 공인 에이전트, 영국유학센터 신촌지사가 운영합니다. 2006년부터 20년, 40여 개 영국 대학 공식 파트너.",
   keywords: [
     "영국학생비자",
-    "영국학생비자센터",
-    "영국학생비자 무료대행",
+    "영국학생비자 지원센터",
+    "영국학생비자 무료 지원",
     "파트너 대학 무료지원서비스",
     "영국유학",
     "CAS",
@@ -36,9 +36,9 @@ export const metadata: Metadata = {
     "비파트너 대학 학생비자",
     "안식년 비자",
   ],
-  authors: [{ name: "영국학생비자센터 by 영국유학센터 신촌지사" }],
+  authors: [{ name: "영국학생비자 지원센터 by 영국유학센터 신촌지사" }],
   creator: "영국유학센터 신촌지사",
-  publisher: "영국학생비자센터",
+  publisher: "영국학생비자 지원센터",
   formatDetection: {
     email: false,
     address: false,
@@ -48,11 +48,11 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "영국학생비자센터 | 영국학생비자 무료지원서비스",
+    title: "영국학생비자 지원센터 | 영국학생비자 무료지원서비스",
     description:
-      "비자 신청부터 출국까지 100% 무료 대행. British Council 공인 에이전트, 2006년부터 20년 · 40여 개 영국 대학 공식 파트너.",
+      "비자 신청부터 출국까지 100% 무료 지원. British Council 공인 에이전트, 2006년부터 20년 · 40여 개 영국 대학 공식 파트너.",
     url: SITE_URL,
-    siteName: "영국학생비자센터",
+    siteName: "영국학생비자 지원센터",
     locale: "ko_KR",
     type: "website",
     images: [
@@ -60,15 +60,15 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "영국학생비자센터 — 영국학생비자 무료지원서비스",
+        alt: "영국학생비자 지원센터 — 영국학생비자 무료지원서비스",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "영국학생비자센터 | 영국학생비자 무료지원서비스",
+    title: "영국학생비자 지원센터 | 영국학생비자 무료지원서비스",
     description:
-      "비자 신청부터 출국까지 100% 무료 대행. 2006년부터 20년 노하우.",
+      "비자 신청부터 출국까지 100% 무료 지원. 2006년부터 20년 노하우.",
     images: ["/og-image.png"],
   },
   icons: {
@@ -106,12 +106,12 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}#organization`,
-      name: "영국학생비자센터",
+      name: "영국학생비자 지원센터",
       alternateName: "영국유학센터 신촌지사",
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
       description:
-        "영국 학생비자 무료 대행 전문, British Council 공인 에이전트. 2006년부터 20년, 40여 개 영국 대학 공식 파트너.",
+        "영국 학생비자 무료 지원 전문, British Council 공인 에이전트. 2006년부터 20년, 40여 개 영국 대학 공식 파트너.",
       foundingDate: "2006",
       sameAs: ["https://pf.kakao.com/_VNmTxd"],
       contactPoint: {
@@ -126,7 +126,7 @@ const jsonLd = {
     {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}#localbusiness`,
-      name: "영국학생비자센터",
+      name: "영국학생비자 지원센터",
       image: `${SITE_URL}/logo.png`,
       url: SITE_URL,
       telephone: "+82-2-393-1030",
@@ -153,14 +153,14 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${SITE_URL}#website`,
       url: SITE_URL,
-      name: "영국학생비자센터",
+      name: "영국학생비자 지원센터",
       inLanguage: "ko-KR",
       publisher: { "@id": `${SITE_URL}#organization` },
     },
     {
       "@type": "Service",
       "@id": `${SITE_URL}#student-visa-service`,
-      name: "영국 학생비자 무료 대행 서비스",
+      name: "영국 학생비자 무료 지원 서비스",
       provider: { "@id": `${SITE_URL}#organization` },
       areaServed: { "@type": "Country", name: "United Kingdom" },
       serviceType: "Visa Application Service",
@@ -168,7 +168,7 @@ const jsonLd = {
         "@type": "Offer",
         price: "0",
         priceCurrency: "KRW",
-        description: "파트너십 대학 학생비자 무료 대행",
+        description: "파트너십 대학 학생비자 무료 지원",
       },
     },
   ],

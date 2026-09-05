@@ -49,7 +49,7 @@ export default function VisaInfo() {
                   </div>
                   <div>
                     <h3 className="text-white font-bold text-lg">
-                      전문가 대행 시 합격률{" "}
+                      전문가 지원 시 합격률{" "}
                       <span className="text-accent">99% 이상</span>
                     </h3>
                     <p className="text-gray-400 text-sm mt-1">
@@ -95,8 +95,8 @@ export default function VisaInfo() {
                   {[
                     "비자 유형별 맞춤 상담",
                     "필수 서류 체크리스트 제공",
-                    "서류 작성 및 번역 대행",
-                    "온라인 신청서 작성 대행",
+                    "서류 작성 및 번역 지원",
+                    "온라인 신청서 작성 지원 (제출은 본인)",
                     "바이오메트릭 예약 안내",
                     "발급까지 진행상황 실시간 공유",
                   ].map((item, i) => (

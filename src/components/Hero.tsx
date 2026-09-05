@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 w-full text-center">
         {/* Badge */}
         <span className="inline-flex items-center gap-1.5 bg-white/10 text-white text-xs md:text-sm font-semibold px-4 py-1.5 rounded-full border border-white/20 mb-7">
-          British Council 공인 에이전트
+          British Council 인증 교육 에이전트
         </span>
 
         {/* Headline */}
@@ -43,7 +43,7 @@ export default function Hero() {
           2006년부터 20년 · 40여 개 영국 대학 공식 파트너
         </p>
         <p className="text-sm text-gray-400 mb-10">
-          대행 수수료 0원 · 비자부터 출국까지 원스톱
+          서비스 이용료 0원 · 비자부터 출국까지 원스톱
         </p>
 
         {/* CTAs */}
@@ -72,7 +72,7 @@ export default function Hero() {
                 clipRule="evenodd"
               />
             </svg>
-            대행 수수료 0원 (100% 무료)
+            서비스 이용료 0원 (100% 무료)
           </div>
           <div className="flex items-center gap-1.5">
             <svg className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">

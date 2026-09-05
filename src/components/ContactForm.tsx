@@ -124,7 +124,7 @@ export default function ContactForm() {
                         💎 PREMIUM
                       </div>
                       <div className="text-sm font-semibold text-gray-900">
-                        유료 비자 대행
+                        유료 비자 지원
                       </div>
                     </button>
                   </div>
