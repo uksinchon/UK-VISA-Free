@@ -20,9 +20,9 @@ export default function Disclaimer({ className = "" }: { className?: string }) {
           </svg>
           <p className="text-xs sm:text-sm text-gray-500 leading-relaxed">
             <span className="font-semibold text-gray-700">안내 · </span>
-            본 유학원은 영국 정부, 이민성(UKVI) 또는 공식 비자 신청 센터(VFS Global)와
+            본 유학원은 영국 정부, 이민국(UKVI) 또는 공식 비자 신청 센터(VFS Global)와
             관련이 없는 <span className="font-semibold text-gray-700">민간 유학 수속 전문 기관</span>입니다.
-            비자 발급의 최종 결정권은 영국 이민성에 있으며, 당사는 비자 신청 서류 준비 및
+            비자 발급의 최종 결정권은 영국 이민국에 있으며, 당사는 비자 신청 서류 준비 및
             자문 서비스를 제공합니다.
           </p>
         </div>
