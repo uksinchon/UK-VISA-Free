@@ -284,6 +284,24 @@ button{font:inherit;color:inherit}
 .after p{color:rgba(255,255,255,.9);font-size:14px;font-weight:500;line-height:1.6;margin:0;text-align:center}
 .after .row{display:grid;grid-template-columns:1fr auto;gap:8px}
 .restart{border-radius:18px;padding:0 16px;font-size:14px;font-weight:700}
+.pass.pending .stamp{display:none}
+.stamp.now{animation-delay:0s}
+.final{display:grid;gap:12px;padding:16px;border-radius:20px;color:#fff;background:rgba(255,255,255,.1);
+  box-shadow:inset 0 0 0 1.5px rgba(232,67,43,.75),0 0 0 6px rgba(232,67,43,.12);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.final-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.final-h .tag{font-size:10px;font-weight:800;letter-spacing:.16em;background:var(--coral);color:#fff;border-radius:999px;padding:4px 9px}
+.final-h b{font-size:17px;font-weight:800}
+.final > p{margin:0;font-size:14px;font-weight:500;line-height:1.6;color:rgba(255,255,255,.9);text-align:left}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.steps li{display:flex;align-items:center;gap:8px;padding:10px;border-radius:12px;background:rgba(255,255,255,.08);font-size:13px;font-weight:700;transition:background .3s}
+.steps li i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;background:rgba(255,255,255,.18)}
+.steps li.active{background:rgba(255,255,255,.18);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.steps li.done i{background:var(--gold);color:var(--navy)}
+.steps li.done{color:rgba(255,255,255,.7)}
+a.cta{text-decoration:none;color:#fff}
+.cta.pulse{animation:ring 2s 1.6s ease-out infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(232,67,43,.6),0 16px 30px -14px rgba(232,67,43,.85)}70%,100%{box-shadow:0 0 0 14px rgba(232,67,43,0),0 16px 30px -14px rgba(232,67,43,.85)}}
+.tip{margin:-4px 0 0 29px;font-size:12px;font-weight:600;color:var(--coral);line-height:1.5}
 .manual{display:grid;gap:8px}
 .manual p{font-size:13px}
 .copybox{width:100%;box-sizing:border-box;height:168px;font:inherit;font-size:16px;line-height:1.5;color:var(--ink);background:#fff;border-radius:16px;padding:12px 14px;border:0;resize:none;-webkit-user-select:text;user-select:text}
@@ -734,6 +752,7 @@ button{font:inherit;color:inherit}
               </p>
             </div>
             <label class="check"><input type="checkbox" id="kk"${state.kakao ? ' checked' : ''}><span>이미 카카오톡으로 상담 중이에요</span></label>
+            <p class="tip" id="kkTip"${state.kakao ? '' : ' hidden'}>위 이름 칸에 카톡 대화명을 적어주시면 답변을 바로 찾아 연결해 드려요.</p>
           </div>
           <div class="field"><label for="memo">하고 싶은 말</label>
             <textarea id="memo" rows="2" maxlength="300" placeholder="예) 내년 3월쯤 출발하고 싶어요">${esc(state.memo)}</textarea></div>
@@ -758,9 +777,14 @@ button{font:inherit;color:inherit}
     setTimeout(() => {
       const el = mount(passHTML());
       setTimeout(celebrate, reduce ? 0 : 700);
-      setTimeout(() => stampHit(el), reduce ? 0 : 1720);
+      if (!needsPaste()) setTimeout(() => stampHit(el), reduce ? 0 : 1720);
+      else setTimeout(() => { const f = el.querySelector('.final'); if (f) f.scrollIntoView({block:'end', behavior: reduce ? 'auto' : 'smooth'}); }, reduce ? 0 : 2000);
     }, reduce ? 300 : 1500);
   }
+
+  // 연락처를 남기지 않았거나 카톡 상담 중이면, 복사→카톡 붙여넣기가 체크인의 마지막 단계
+  const needsPaste = () => state.kakao || !(state.contact && state.agree);
+  const KAKAO_CHAT = 'https://pf.kakao.com/_VNmTxd/chat';
 
   function val(key){ const a = state.answers[key]; return a ? a.l : '상담 때 함께 정해요'; }
 
@@ -771,7 +795,30 @@ button{font:inherit;color:inherit}
     const region = state.answers.region;
     const bars = Array.from({length:32},(_,k)=>`<i style="width:${[1,2,3,1,2,1,4][(k*7+3)%7]}px"></i>`).join('');
     let n = 0; const pf = (lbl, v, full) => `<div class="pf${full?' full':''}" style="--i:${n++}"><small>${lbl}</small><b>${esc(v)}</b></div>`;
-    return `<div class="view done"><div class="slot"><div class="pass" aria-label="체크인 결과 보딩패스">
+    const remind = needsPaste();
+    const manual = `<div class="manual" id="manual" hidden>
+        <p>자동 복사가 안 되면 아래 글을 길게 눌러 <b>전체 선택 → 복사</b>해 주세요.</p>
+        <textarea class="copybox" id="copyText" readonly aria-label="복사할 체크인 답변"></textarea>
+      </div>`;
+    const after = remind ? `<div class="after">
+      <div class="final">
+        <div class="final-h"><span class="tag">LAST STEP</span><b>탑승 도장까지 딱 한 단계!</b></div>
+        <p>답변을 복사해서 카카오톡 상담창에 붙여넣어 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
+        <ol class="steps"><li id="s1" class="active"><i>1</i>답변 복사하기</li><li id="s2"><i>2</i>카톡에 붙여넣기</li></ol>
+        <button class="cta pulse" data-act="copy" id="copyBtn">답변 복사하기</button>
+        <a class="cta dark" id="kakaoBtn" href="${KAKAO_CHAT}" target="_blank" rel="noopener" hidden>카카오톡 상담창 열기 →</a>
+      </div>
+      ${manual}
+      <button class="restart glassbtn" data-act="restart" style="padding:12px">처음부터 다시 하기</button>
+    </div>` : `<div class="after">
+      <p>체크인 완료! 남겨주신 연락처로 상담 전에 먼저 연락드릴게요.<br>카톡으로 이야기 중이라면 답변을 복사해서 붙여넣어 주셔도 좋아요.</p>
+      <div class="row">
+        <button class="cta" data-act="copy">답변 복사하기</button>
+        <button class="restart glassbtn" data-act="restart">다시 하기</button>
+      </div>
+      ${manual}
+    </div>`;
+    return `<div class="view done"><div class="slot"><div class="pass${remind ? ' pending' : ''}" aria-label="체크인 결과 보딩패스">
       <div class="pass-h"><span>BOARDING PASS</span><em>영국유학센터 신촌지사</em></div>
       <div class="legs">
         <div class="leg"><div class="code">ICN</div><div class="city">SEOUL</div></div>
@@ -794,17 +841,7 @@ button{font:inherit;color:inherit}
         <div class="stamp" aria-hidden="true"><b>CHECKED IN</b><small>SINCHON · ${stampDate}</small></div>
       </div>
     </div></div>
-    <div class="after">
-      <p>체크인 완료! 아래 버튼으로 복사해서<br>카카오톡 상담창에 붙여넣어 주시면 맞춤 상담을 준비해 둘게요.</p>
-      <div class="row">
-        <button class="cta" data-act="copy">답변 복사하기</button>
-        <button class="restart glassbtn" data-act="restart">다시 하기</button>
-      </div>
-      <div class="manual" id="manual" hidden>
-        <p>자동 복사가 안 되면 아래 글을 길게 눌러 <b>전체 선택 → 복사</b>해 주세요.</p>
-        <textarea class="copybox" id="copyText" readonly aria-label="복사할 체크인 답변"></textarea>
-      </div>
-    </div></div>`;
+    ${after}</div>`;
   }
 
   /* ---------- interactions ---------- */
@@ -835,7 +872,7 @@ button{font:inherit;color:inherit}
     });
     const ag = el.querySelector('#agree'), kk = el.querySelector('#kk');
     if (ag) ag.addEventListener('change', () => { state.agree = ag.checked; $('agreeWrap').classList.remove('bad'); $('err').textContent = ''; Sound.tick(); });
-    if (kk) kk.addEventListener('change', () => { state.kakao = kk.checked; $('nudge').hidden = true; Sound.tick(); });
+    if (kk) kk.addEventListener('change', () => { state.kakao = kk.checked; $('nudge').hidden = true; $('kkTip').hidden = !kk.checked; Sound.tick(); });
   }
 
   /* ---------- last step: contact + consent ---------- */
@@ -968,7 +1005,24 @@ button{font:inherit;color:inherit}
     return L.join('\n');
   }
   function toast(){ Sound.tick(); const t = $('copied'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2200); }
+  // 복사 시점에 남은 단계 표시를 넘기고, 비워 둔 도장을 찍는다
+  function afterCopy(){
+    const btn = $('copyBtn'); if (!btn || btn.dataset.done) return;
+    btn.dataset.done = '1';
+    const pass = current && current.querySelector('.pass.pending');
+    if (pass){
+      pass.classList.remove('pending');
+      pass.querySelector('.stamp').classList.add('now');
+      setTimeout(() => stampHit(current), reduce ? 0 : 380);
+    }
+    $('s1').classList.replace('active','done'); $('s1').querySelector('i').textContent = '✓';
+    $('s2').classList.add('active');
+    btn.classList.remove('pulse','cta'); btn.classList.add('restart','glassbtn'); btn.style.padding = '12px'; btn.textContent = '한 번 더 복사하기';
+    const k = $('kakaoBtn'); k.hidden = false; k.classList.add('pulse');
+    anim(k, [{opacity:0, transform:'translateY(10px) scale(.96)'},{opacity:1, transform:'none'}], {duration:500, easing:'cubic-bezier(.34,1.45,.64,1)'});
+  }
   function copy(){
+    setTimeout(afterCopy, 0);
     const text = summary();
     const box = $('manual'), ta = $('copyText');
     ta.value = text; box.hidden = false;
