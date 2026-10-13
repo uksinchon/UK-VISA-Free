@@ -301,7 +301,9 @@ button{font:inherit;color:inherit}
 a.cta{text-decoration:none;color:#fff}
 .cta.pulse{animation:ring 2s 1.6s ease-out infinite}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(232,67,43,.6),0 16px 30px -14px rgba(232,67,43,.85)}70%,100%{box-shadow:0 0 0 14px rgba(232,67,43,0),0 16px 30px -14px rgba(232,67,43,.85)}}
-.backnote{margin:0;padding:12px;border-radius:14px;background:rgba(255,255,255,.14);font-size:14px;font-weight:700;text-align:center;line-height:1.5}
+.backnote{margin:0;padding:13px 12px;border-radius:14px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);font-size:14px;font-weight:600;text-align:center;line-height:1.7}
+.backnote b{color:var(--gold);font-weight:800}
+.backnote .x{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#fff;color:var(--navy);font-size:12px;font-weight:800;vertical-align:1px}
 .tip{margin:-4px 0 0 29px;font-size:12px;font-weight:600;color:var(--coral);line-height:1.5}
 .manual{display:grid;gap:8px}
 .manual p{font-size:13px}
@@ -785,7 +787,7 @@ a.cta{text-decoration:none;color:#fff}
 
   // 연락처를 남기지 않았거나 카톡 상담 중이면, 복사→카톡 붙여넣기가 체크인의 마지막 단계
   const needsPaste = () => state.kakao || !(state.contact && state.agree);
-  // 카톡 인앱 브라우저에서 열렸으면 창을 닫고 원래 대화방으로 돌아가는 스킴 사용 (회사 번호 카톡은 직접 링크 불가)
+  // 회사 번호 카톡은 대화방 직접 링크가 불가하고, 인앱 브라우저 닫기 스킴도 실기기에서 동작하지 않음 → 닫는 방법을 안내
   const IN_KAKAO = /KAKAOTALK/i.test(navigator.userAgent);
 
   function val(key){ const a = state.answers[key]; return a ? a.l : '상담 때 함께 정해요'; }
@@ -809,8 +811,8 @@ a.cta{text-decoration:none;color:#fff}
         <ol class="steps"><li id="s1" class="active"><i>1</i>답변 복사하기</li><li id="s2"><i>2</i>카톡에 붙여넣기</li></ol>
         <button class="cta pulse" data-act="copy" id="copyBtn">답변 복사하기</button>
         ${IN_KAKAO
-          ? '<a class="cta dark" id="kakaoBtn" href="kakaotalk://inappbrowser/close" hidden>카톡 대화방으로 돌아가기 →</a>'
-          : '<p class="backnote" id="kakaoBtn" hidden>이제 저희와 대화 중인 카톡 대화방에 붙여넣어 주세요 💬</p>'}
+          ? '<p class="backnote" id="kakaoBtn" hidden>화면 위쪽 <span class="x">✕</span> 를 눌러 대화방으로 돌아간 뒤<br>입력창을 길게 눌러 <b>붙여넣기</b> 해주세요 💬</p>'
+          : '<p class="backnote" id="kakaoBtn" hidden>이제 저희와 대화 중인 카톡 대화방에<br>입력창을 길게 눌러 <b>붙여넣기</b> 해주세요 💬</p>'}
       </div>
       ${manual}
       <button class="restart glassbtn" data-act="restart" style="padding:12px">처음부터 다시 하기</button>
