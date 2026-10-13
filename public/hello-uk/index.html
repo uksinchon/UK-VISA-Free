@@ -180,6 +180,30 @@ button{font:inherit;color:inherit}
 .field label{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.02em}
 .field input,.field textarea{font:inherit;font-size:16px;font-weight:500;color:var(--ink);border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;background:#F6F7FB;outline:none;transition:border-color .2s,background .2s,box-shadow .2s;resize:none;box-sizing:border-box;width:100%}
 .field input:focus,.field textarea:focus{border-color:var(--navy);background:#fff;box-shadow:0 0 0 4px rgba(26,46,90,.08)}
+.field label em{display:block;font-style:normal;font-weight:600;color:var(--coral);letter-spacing:0;margin-top:2px;font-size:11.5px}
+.field.bad input{border-color:var(--coral);background:#FFF5F3}
+.checks{display:grid;gap:8px;margin:2px 0 14px;animation:rise .55s .55s var(--ease) both}
+.check{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:600;line-height:1.45;cursor:pointer;color:var(--ink)}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;margin:0;border-radius:6px;border:1.5px solid #C9CEDD;background:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s}
+.check input:checked{background:var(--navy);border-color:var(--navy)}
+.check input:checked::after{content:"";width:10px;height:6px;border:2.5px solid #fff;border-top:0;border-right:0;transform:translateY(-1px) rotate(-45deg)}
+.check input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.check b{color:var(--coral);font-weight:700}
+.agree-wrap{display:grid;gap:6px;padding:11px 12px;border-radius:14px;background:#F6F7FB;animation:rise .4s var(--ease) both}
+.agree-wrap.bad{box-shadow:inset 0 0 0 1.5px var(--coral);background:#FFF5F3}
+.more{border:0;background:none;padding:0;margin-left:29px;font-size:12px;font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:2px;cursor:pointer;justify-self:start}
+.agree-detail{margin:0 0 0 29px;font-size:12px;line-height:1.6;color:var(--muted)}
+.agree-detail a{color:var(--navy);font-weight:700}
+.err{margin:0 0 10px;font-size:13px;font-weight:600;color:#C22F19}
+.err:empty{display:none}
+.nudge{display:grid;gap:10px;padding:14px;border-radius:16px;background:var(--tint);margin-bottom:10px;animation:rise .45s var(--spring) both}
+.nudge p{margin:0;font-size:14px;font-weight:700;line-height:1.5}
+.nudge .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.nudge button{border:0;border-radius:12px;padding:11px;font-size:14px;font-weight:700;cursor:pointer}
+.nudge .yes{background:var(--navy);color:#fff}
+.nudge .no{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
+.shake{animation:shake .4s ease both!important}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px}
 .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:13.5px;font-weight:600;cursor:pointer;
   transition:background .25s,border-color .25s,color .25s,transform .35s var(--spring);animation:optIn .55s var(--spring) both;animation-delay:calc(.38s + var(--i) * .05s)}
@@ -530,7 +554,8 @@ button{font:inherit;color:inherit}
 
   const $ = id => document.getElementById(id);
   const app = $('app'), stage = $('stage'), numEl = $('num'), track = $('track');
-  const state = { idx:-1, answers:{}, chips:new Set(), name:'', memo:'', locked:false };
+  const state = { idx:-1, answers:{}, chips:new Set(), name:'', contact:'', agree:false, kakao:false, nudged:false, memo:'', locked:false };
+  const FORMSPREE = 'https://formspree.io/f/xqaqagrk';
   let current = null, cheerTimer = 0;
 
   const esc = t => String(t).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
@@ -694,8 +719,29 @@ button{font:inherit;color:inherit}
           <div class="chips">${CHIPS.map((c,k)=>`<button class="chip${state.chips.has(c)?' on':''}" style="--i:${k}" data-chip="${esc(c)}">${esc(c)}</button>`).join('')}</div>
           <div class="field"><label for="nm">어떻게 불러드릴까요?</label>
             <input id="nm" maxlength="20" autocomplete="name" placeholder="이름 또는 닉네임" value="${esc(state.name)}"></div>
+          <div class="field" id="ctField"><label for="ct">연락받을 휴대폰 또는 이메일<em>남겨주시면 상담 전에 맞춤 코스를 먼저 보내드려요</em></label>
+            <input id="ct" maxlength="60" autocomplete="tel" placeholder="010-0000-0000 또는 이메일" value="${esc(state.contact)}"></div>
+          <div class="checks">
+            <div class="agree-wrap" id="agreeWrap"${state.contact ? '' : ' hidden'}>
+              <label class="check"><input type="checkbox" id="agree"${state.agree ? ' checked' : ''}><span><b>[필수]</b> 개인정보 수집·이용에 동의해요</span></label>
+              <button type="button" class="more" data-act="more" aria-expanded="false" aria-controls="agreeDetail">내용 보기</button>
+              <p class="agree-detail" id="agreeDetail" hidden>
+                수집 항목: 이름, 연락처, 체크인 답변<br>
+                이용 목적: 어학연수 상담 연락 및 맞춤 안내<br>
+                보유 기간: 상담 완료 후 파기<br>
+                동의하지 않아도 보딩패스는 받을 수 있어요. 이 경우 연락처는 전송되지 않아요.
+                <a href="https://ukvisa.kr/privacy" target="_blank" rel="noopener">개인정보 처리방침</a>
+              </p>
+            </div>
+            <label class="check"><input type="checkbox" id="kk"${state.kakao ? ' checked' : ''}><span>이미 카카오톡으로 상담 중이에요</span></label>
+          </div>
           <div class="field"><label for="memo">하고 싶은 말</label>
             <textarea id="memo" rows="2" maxlength="300" placeholder="예) 내년 3월쯤 출발하고 싶어요">${esc(state.memo)}</textarea></div>
+          <p class="err" id="err" role="alert"></p>
+          <div class="nudge" id="nudge" hidden>
+            <p>연락처를 남겨주시면 상담 전에<br>맞춤 코스를 먼저 정리해서 보내드려요 🙌</p>
+            <div class="row"><button type="button" class="yes" data-act="fillct">남길게요</button><button type="button" class="no" data-act="skipct">그냥 받을게요</button></div>
+          </div>
           <div class="actions">
             <button class="cta dark" data-act="finish">보딩패스 받기 ✈️</button>
             <button class="ghostbtn" data-act="skip">건너뛰고 완료하기</button>
@@ -770,17 +816,67 @@ button{font:inherit;color:inherit}
       if (b.dataset.chip) { b.classList.toggle('on'); state.chips.has(b.dataset.chip) ? state.chips.delete(b.dataset.chip) : state.chips.add(b.dataset.chip); popAt(b, 6); Sound.tick(); buzz(6); return; }
       const act = b.dataset.act;
       if (act === 'start') { Sound.unlock(); Sound.pop(); buzz(10); popAt(b, 18); go(0, false, center(b)); }
-      if (act === 'finish' || act === 'skip') {
-        if (act === 'finish') { state.name = ($('nm').value||'').trim(); state.memo = ($('memo').value||'').trim(); }
-        else { state.chips.clear(); state.memo = ''; }
-        go(STEPS.length + 1, false, center(b));
+      if (act === 'more') {
+        const d = $('agreeDetail'); d.hidden = !d.hidden; b.setAttribute('aria-expanded', !d.hidden); b.textContent = d.hidden ? '내용 보기' : '접기';
       }
+      if (act === 'fillct') { $('nudge').hidden = true; const ct = $('ct'); ct.focus(); ct.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'}); }
+      if (act === 'finish' || act === 'skipct') { if (act === 'skipct') $('nudge').hidden = true; tryFinish(b, act === 'skipct'); }
+      if (act === 'skip') { state.chips.clear(); state.memo = ''; state.contact = ''; state.agree = false; complete(b); }
       if (act === 'copy') copy();
-      if (act === 'restart') { state.answers = {}; state.chips.clear(); state.name=''; state.memo=''; go(-1, true, center(b)); }
+      if (act === 'restart') { Object.assign(state, {answers:{}, name:'', contact:'', agree:false, kakao:false, nudged:false, memo:''}); state.chips.clear(); go(-1, true, center(b)); }
     });
-    const nm = el.querySelector('#nm'), memo = el.querySelector('#memo');
+    const nm = el.querySelector('#nm'), memo = el.querySelector('#memo'), ct = el.querySelector('#ct');
     if (nm) nm.addEventListener('input', () => state.name = nm.value.trim());
     if (memo) memo.addEventListener('input', () => state.memo = memo.value.trim());
+    if (ct) ct.addEventListener('input', () => {
+      state.contact = ct.value.trim();
+      $('agreeWrap').hidden = !state.contact;
+      $('ctField').classList.remove('bad'); $('err').textContent = '';
+    });
+    const ag = el.querySelector('#agree'), kk = el.querySelector('#kk');
+    if (ag) ag.addEventListener('change', () => { state.agree = ag.checked; $('agreeWrap').classList.remove('bad'); $('err').textContent = ''; Sound.tick(); });
+    if (kk) kk.addEventListener('change', () => { state.kakao = kk.checked; $('nudge').hidden = true; Sound.tick(); });
+  }
+
+  /* ---------- last step: contact + consent ---------- */
+  const isPhone = v => /^[0-9+\-\s()]+$/.test(v) && v.replace(/\D/g,'').length >= 9 && v.replace(/\D/g,'').length <= 13;
+  const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+  function flag(el, msg){
+    $('err').textContent = msg;
+    el.classList.add('bad'); el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+    el.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
+    buzz(30);
+  }
+  function tryFinish(b, skipNudge){
+    state.name = ($('nm').value||'').trim(); state.memo = ($('memo').value||'').trim();
+    state.contact = ($('ct').value||'').trim(); state.agree = $('agree').checked; state.kakao = $('kk').checked;
+    if (state.contact){
+      if (!isPhone(state.contact) && !isEmail(state.contact)) return flag($('ctField'), '휴대폰 번호나 이메일 형식을 한 번만 확인해 주세요.');
+      if (!state.agree) return flag($('agreeWrap'), '연락처를 보내려면 개인정보 수집·이용에 동의해 주세요.');
+    } else if (!state.kakao && !state.nudged && !skipNudge){
+      state.nudged = true;
+      const n = $('nudge'); n.hidden = false; n.scrollIntoView({block:'center', behavior: reduce ? 'auto' : 'smooth'});
+      Sound.tick(); return;
+    }
+    complete(b);
+  }
+  function complete(b){ submit(); go(STEPS.length + 1, false, center(b)); }
+
+  // Formspree 전송: 화면 흐름은 기다리지 않고 백그라운드로 보냄 (실패해도 고객 화면에는 영향 없음)
+  function submit(){
+    const share = state.contact && state.agree;
+    const fd = new FormData();
+    fd.append('_subject', `[어학연수 체크인] ${state.name || '이름 미기재'} · ${share ? state.contact : (state.kakao ? '카톡 상담 중' : '연락처 없음')}`);
+    fd.append('폼_종류', '어학연수 사전 체크인 (ukvisa.kr/hello-uk)');
+    fd.append('이름', state.name || '-');
+    fd.append('연락처', share ? state.contact : '-');
+    if (share && isEmail(state.contact)) fd.append('email', state.contact);
+    fd.append('카톡_상담중', state.kakao ? '예' : '아니오');
+    STEPS.forEach(st => fd.append(st.name, val(st.key)));
+    fd.append('관심_사항', state.chips.size ? [...state.chips].join(', ') : '-');
+    fd.append('메모', state.memo || '-');
+    fd.append('개인정보_동의', share ? '동의함' : '해당 없음(연락처 미전송)');
+    try { fetch(FORMSPREE, {method:'POST', body:fd, headers:{Accept:'application/json'}, keepalive:true}).catch(()=>{}); } catch(e){}
   }
 
   function pick(btn, k, e){
@@ -859,6 +955,7 @@ button{font:inherit;color:inherit}
     const L = [
       '[영국 어학연수 상담 전 체크인]',
       '이름: ' + (state.name || '-'),
+      '연락처: ' + (state.contact || '-'),
       '현재 상황: ' + val('status'),
       '희망 기간: ' + val('duration'),
       '연수 목적: ' + val('purpose'),
