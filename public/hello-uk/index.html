@@ -301,6 +301,7 @@ button{font:inherit;color:inherit}
 a.cta{text-decoration:none;color:#fff}
 .cta.pulse{animation:ring 2s 1.6s ease-out infinite}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(232,67,43,.6),0 16px 30px -14px rgba(232,67,43,.85)}70%,100%{box-shadow:0 0 0 14px rgba(232,67,43,0),0 16px 30px -14px rgba(232,67,43,.85)}}
+.backnote{margin:0;padding:12px;border-radius:14px;background:rgba(255,255,255,.14);font-size:14px;font-weight:700;text-align:center;line-height:1.5}
 .tip{margin:-4px 0 0 29px;font-size:12px;font-weight:600;color:var(--coral);line-height:1.5}
 .manual{display:grid;gap:8px}
 .manual p{font-size:13px}
@@ -392,7 +393,7 @@ a.cta{text-decoration:none;color:#fff}
   </div>
 </div>
 <div class="fx" id="fx" aria-hidden="true"></div>
-<div class="copied" id="copied">복사됐어요! 카톡 상담창에 붙여넣어 주세요</div>
+<div class="copied" id="copied">복사됐어요! 카톡 대화방에 붙여넣어 주세요</div>
 
 <script>
 (function(){
@@ -784,7 +785,8 @@ a.cta{text-decoration:none;color:#fff}
 
   // 연락처를 남기지 않았거나 카톡 상담 중이면, 복사→카톡 붙여넣기가 체크인의 마지막 단계
   const needsPaste = () => state.kakao || !(state.contact && state.agree);
-  const KAKAO_CHAT = 'https://pf.kakao.com/_VNmTxd/chat';
+  // 카톡 인앱 브라우저에서 열렸으면 창을 닫고 원래 대화방으로 돌아가는 스킴 사용 (회사 번호 카톡은 직접 링크 불가)
+  const IN_KAKAO = /KAKAOTALK/i.test(navigator.userAgent);
 
   function val(key){ const a = state.answers[key]; return a ? a.l : '상담 때 함께 정해요'; }
 
@@ -803,10 +805,12 @@ a.cta{text-decoration:none;color:#fff}
     const after = remind ? `<div class="after">
       <div class="final">
         <div class="final-h"><span class="tag">LAST STEP</span><b>탑승 도장까지 딱 한 단계!</b></div>
-        <p>답변을 복사해서 카카오톡 상담창에 붙여넣어 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
+        <p>답변을 복사해서 저희와 대화 중인 카톡 대화방에 붙여넣어 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
         <ol class="steps"><li id="s1" class="active"><i>1</i>답변 복사하기</li><li id="s2"><i>2</i>카톡에 붙여넣기</li></ol>
         <button class="cta pulse" data-act="copy" id="copyBtn">답변 복사하기</button>
-        <a class="cta dark" id="kakaoBtn" href="${KAKAO_CHAT}" target="_blank" rel="noopener" hidden>카카오톡 상담창 열기 →</a>
+        ${IN_KAKAO
+          ? '<a class="cta dark" id="kakaoBtn" href="kakaotalk://inappbrowser/close" hidden>카톡 대화방으로 돌아가기 →</a>'
+          : '<p class="backnote" id="kakaoBtn" hidden>이제 저희와 대화 중인 카톡 대화방에 붙여넣어 주세요 💬</p>'}
       </div>
       ${manual}
       <button class="restart glassbtn" data-act="restart" style="padding:12px">처음부터 다시 하기</button>
@@ -1018,7 +1022,7 @@ a.cta{text-decoration:none;color:#fff}
     $('s1').classList.replace('active','done'); $('s1').querySelector('i').textContent = '✓';
     $('s2').classList.add('active');
     btn.classList.remove('pulse','cta'); btn.classList.add('restart','glassbtn'); btn.style.padding = '12px'; btn.textContent = '한 번 더 복사하기';
-    const k = $('kakaoBtn'); k.hidden = false; k.classList.add('pulse');
+    const k = $('kakaoBtn'); k.hidden = false; if (k.tagName === 'A') k.classList.add('pulse');
     anim(k, [{opacity:0, transform:'translateY(10px) scale(.96)'},{opacity:1, transform:'none'}], {duration:500, easing:'cubic-bezier(.34,1.45,.64,1)'});
   }
   function copy(){
