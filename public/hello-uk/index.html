@@ -395,7 +395,7 @@ a.cta{text-decoration:none;color:#fff}
   </div>
 </div>
 <div class="fx" id="fx" aria-hidden="true"></div>
-<div class="copied" id="copied">복사됐어요! 카톡 대화방에 붙여넣어 주세요</div>
+<div class="copied" id="copied">복사됐어요! 카톡 대화방에 붙여넣고 전송해 주세요</div>
 
 <script>
 (function(){
@@ -807,12 +807,12 @@ a.cta{text-decoration:none;color:#fff}
     const after = remind ? `<div class="after">
       <div class="final">
         <div class="final-h"><span class="tag">LAST STEP</span><b>탑승 도장까지 딱 한 단계!</b></div>
-        <p>답변을 복사해서 저희와 대화 중인 카톡 대화방에 붙여넣어 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
-        <ol class="steps"><li id="s1" class="active"><i>1</i>답변 복사하기</li><li id="s2"><i>2</i>카톡에 붙여넣기</li></ol>
+        <p>답변을 복사해서 저희와 대화 중이던 카톡 대화방에 붙여넣고 전송해 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
+        <ol class="steps"><li id="s1" class="active"><i>1</i>답변 복사하기</li><li id="s2"><i>2</i>카톡에 붙여넣고 전송</li></ol>
         <button class="cta pulse" data-act="copy" id="copyBtn">답변 복사하기</button>
         ${IN_KAKAO
-          ? '<p class="backnote" id="kakaoBtn" hidden>왼쪽 위 <span class="x">&lt;</span> 돌아가기 버튼으로 대화방에 돌아간 뒤<br>입력창을 길게 눌러 <b>붙여넣기</b> 해주세요 💬</p>'
-          : '<p class="backnote" id="kakaoBtn" hidden>이제 저희와 대화 중인 카톡 대화방에<br>입력창을 길게 눌러 <b>붙여넣기</b> 해주세요 💬</p>'}
+          ? '<p class="backnote" id="kakaoBtn" hidden>① 왼쪽 위 <span class="x">&lt;</span> 를 눌러 대화방으로 돌아가기<br>② 입력창을 길게 눌러 <b>붙여넣기 → 전송</b> 💬</p>'
+          : '<p class="backnote" id="kakaoBtn" hidden>저희와 대화 중이던 카톡 대화방에서<br>입력창을 길게 눌러 <b>붙여넣기 → 전송</b>해 주세요 💬</p>'}
       </div>
       ${manual}
       <button class="restart glassbtn" data-act="restart" style="padding:12px">처음부터 다시 하기</button>
