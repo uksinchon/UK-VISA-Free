@@ -301,6 +301,11 @@ button{font:inherit;color:inherit}
 a.cta{text-decoration:none;color:#fff}
 .cta.pulse{animation:ring 2s 1.6s ease-out infinite}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(232,67,43,.6),0 16px 30px -14px rgba(232,67,43,.85)}70%,100%{box-shadow:0 0 0 14px rgba(232,67,43,0),0 16px 30px -14px rgba(232,67,43,.85)}}
+.cta.kakao{background:#FEE500;color:#191919;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 16px 30px -14px rgba(254,229,0,.55)}
+.cta.kakao svg{flex:none}
+.cta.kakao.pulse{animation:ringY 2s 1.6s ease-out infinite}
+@keyframes ringY{0%{box-shadow:0 0 0 0 rgba(254,229,0,.6)}70%,100%{box-shadow:0 0 0 14px rgba(254,229,0,0)}}
+.linkbtn{border:0;background:none;color:rgba(255,255,255,.75);font-size:13px;font-weight:600;padding:4px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;justify-self:center}
 .backnote{margin:0;padding:13px 12px;border-radius:14px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);font-size:14px;font-weight:600;text-align:center;line-height:1.7}
 .backnote b{color:var(--gold);font-weight:800}
 .backnote .x{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#fff;color:var(--navy);font-size:12px;font-weight:800;vertical-align:1px}
@@ -789,6 +794,11 @@ a.cta{text-decoration:none;color:#fff}
   const needsPaste = () => state.kakao || !(state.contact && state.agree);
   // 회사 번호 카톡은 대화방 직접 링크가 불가하고, 인앱 브라우저 닫기 스킴도 실기기에서 동작하지 않음 → 닫는 방법을 안내
   const IN_KAKAO = /KAKAOTALK/i.test(navigator.userAgent);
+  // 카카오톡 공유: 카카오 개발자 앱(어학연수 사전 체크인)에 등록된 ukvisa.kr에서만 동작
+  const KAKAO_KEY = '6bf3974a78bd1e3e1a9b32d065ba9086';
+  const PAGE_URL = 'https://ukvisa.kr/hello-uk/';
+  const CAN_KAKAO = /(^|\.)ukvisa\.kr$/.test(location.hostname);
+  const KAKAO_ICON = '<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#191919" d="M12 3C6.48 3 2 6.48 2 10.77c0 2.76 1.85 5.18 4.63 6.55l-.95 3.48c-.08.3.26.54.52.37l4.15-2.74c.54.06 1.09.1 1.65.1 5.52 0 10-3.48 10-7.76S17.52 3 12 3z"/></svg>';
 
   function val(key){ const a = state.answers[key]; return a ? a.l : '상담 때 함께 정해요'; }
 
@@ -807,19 +817,23 @@ a.cta{text-decoration:none;color:#fff}
     const after = remind ? `<div class="after">
       <div class="final">
         <div class="final-h"><span class="tag">LAST STEP</span><b>탑승 도장까지 딱 한 단계!</b></div>
-        <p>답변을 복사해서 저희와 대화 중이던 카톡 대화방에 붙여넣고 전송해 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
+        ${CAN_KAKAO ? `<p>아래 버튼을 누르고 저희와 대화 중이던 카톡 대화방을 골라 전송해 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
+        <ol class="steps"><li id="s1" class="active"><i>1</i>카톡으로 보내기</li><li id="s2"><i>2</i>대화방 고르고 전송</li></ol>
+        <button class="cta kakao pulse" data-act="kshare" id="copyBtn">${KAKAO_ICON}카카오톡으로 결과 보내기</button>
+        <p class="backnote" id="kakaoBtn" hidden>카톡에서 <b>저희와 대화 중이던 방</b>을 골라<br><b>전송</b>하면 끝이에요 💬</p>
+        <button class="linkbtn" data-act="copy">카톡 화면이 안 열리면 복사해서 붙여넣기</button>` : `<p>답변을 복사해서 저희와 대화 중이던 카톡 대화방에 붙여넣고 전송해 주세요. 상담사가 바로 확인하고 맞춤 상담을 준비해요.</p>
         <ol class="steps"><li id="s1" class="active"><i>1</i>답변 복사하기</li><li id="s2"><i>2</i>카톡에 붙여넣고 전송</li></ol>
         <button class="cta pulse" data-act="copy" id="copyBtn">답변 복사하기</button>
         ${IN_KAKAO
           ? '<p class="backnote" id="kakaoBtn" hidden>① 왼쪽 위 <span class="x">&lt;</span> 를 눌러 대화방으로 돌아가기<br>② 입력창을 길게 눌러 <b>붙여넣기 → 전송</b> 💬</p>'
-          : '<p class="backnote" id="kakaoBtn" hidden>저희와 대화 중이던 카톡 대화방에서<br>입력창을 길게 눌러 <b>붙여넣기 → 전송</b>해 주세요 💬</p>'}
+          : '<p class="backnote" id="kakaoBtn" hidden>저희와 대화 중이던 카톡 대화방에서<br>입력창을 길게 눌러 <b>붙여넣기 → 전송</b>해 주세요 💬</p>'}`}
       </div>
       ${manual}
       <button class="restart glassbtn" data-act="restart" style="padding:12px">처음부터 다시 하기</button>
     </div>` : `<div class="after">
-      <p>체크인 완료! 남겨주신 연락처로 상담 전에 먼저 연락드릴게요.<br>카톡으로 이야기 중이라면 답변을 복사해서 붙여넣어 주셔도 좋아요.</p>
+      <p>체크인 완료! 남겨주신 연락처로 상담 전에 먼저 연락드릴게요.<br>카톡으로 이야기 중이라면 결과를 카톡으로 보내 주셔도 좋아요.</p>
       <div class="row">
-        <button class="cta" data-act="copy">답변 복사하기</button>
+        ${CAN_KAKAO ? `<button class="cta kakao" data-act="kshare">${KAKAO_ICON}카톡으로 결과 보내기</button>` : '<button class="cta" data-act="copy">답변 복사하기</button>'}
         <button class="restart glassbtn" data-act="restart">다시 하기</button>
       </div>
       ${manual}
@@ -866,6 +880,7 @@ a.cta{text-decoration:none;color:#fff}
       if (act === 'finish' || act === 'skipct') { if (act === 'skipct') $('nudge').hidden = true; tryFinish(b, act === 'skipct'); }
       if (act === 'skip') { state.chips.clear(); state.memo = ''; state.contact = ''; state.agree = false; complete(b); }
       if (act === 'copy') copy();
+      if (act === 'kshare') kshare();
       if (act === 'restart') { Object.assign(state, {answers:{}, name:'', contact:'', agree:false, kakao:false, nudged:false, memo:''}); state.chips.clear(); go(-1, true, center(b)); }
     });
     const nm = el.querySelector('#nm'), memo = el.querySelector('#memo'), ct = el.querySelector('#ct');
@@ -1023,9 +1038,36 @@ a.cta{text-decoration:none;color:#fff}
     }
     $('s1').classList.replace('active','done'); $('s1').querySelector('i').textContent = '✓';
     $('s2').classList.add('active');
-    btn.classList.remove('pulse','cta'); btn.classList.add('restart','glassbtn'); btn.style.padding = '12px'; btn.textContent = '한 번 더 복사하기';
+    btn.classList.remove('pulse','cta','kakao'); btn.classList.add('restart','glassbtn'); btn.style.padding = '12px'; btn.textContent = btn.dataset.act === 'kshare' ? '카톡으로 다시 보내기' : '한 번 더 복사하기';
     const k = $('kakaoBtn'); k.hidden = false; if (k.tagName === 'A') k.classList.add('pulse');
     anim(k, [{opacity:0, transform:'translateY(10px) scale(.96)'},{opacity:1, transform:'none'}], {duration:500, easing:'cubic-bezier(.34,1.45,.64,1)'});
+  }
+  // 카카오톡 공유: 고객이 대화방만 고르면 결과가 카드 메시지로 전송됨 (텍스트 템플릿 200자 제한)
+  function shareText(){
+    const L = [`[어학연수 체크인] ${state.name || '이름 미기재'}`,
+      `상황 ${val('status')} · 기간 ${val('duration')}`,
+      `목적 ${val('purpose')}`,
+      `영어 ${val('level')} · 지역 ${val('region')}`,
+      `연락 ${val('call')}${state.contact ? ' · ' + state.contact : ''}`];
+    if (state.chips.size) L.push('관심 ' + [...state.chips].join(', '));
+    if (state.memo) L.push('메모 ' + state.memo);
+    const t = L.join('\n');
+    return t.length > 200 ? t.slice(0, 199) + '…' : t;
+  }
+  function kshare(){
+    const K = window.Kakao;
+    if (!(K && K.isInitialized && K.isInitialized() && K.Share)) { copy(); return; }
+    try {
+      K.Share.sendDefault({ objectType:'text', text: shareText(),
+        link:{ mobileWebUrl: PAGE_URL, webUrl: PAGE_URL }, buttonTitle:'체크인 페이지 보기' });
+      Sound.tick(); setTimeout(afterCopy, 0);
+    } catch(e){ copy(); }
+  }
+  if (CAN_KAKAO){
+    const sc = document.createElement('script');
+    sc.src = 'https://t1.kakaocdn.net/kakao_js_sdk/2.7.4/kakao.min.js'; sc.crossOrigin = 'anonymous';
+    sc.onload = () => { try { if (!window.Kakao.isInitialized()) window.Kakao.init(KAKAO_KEY); } catch(e){} };
+    document.head.appendChild(sc);
   }
   function copy(){
     setTimeout(afterCopy, 0);
