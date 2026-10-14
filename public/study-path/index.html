@@ -266,7 +266,7 @@ button{font:inherit;color:inherit}
 .ph .who{font-size:13px;font-weight:600;opacity:.85}
 .ph .route{font-size:11px;letter-spacing:.12em;gap:6px;opacity:.9}
 .rows{display:grid;padding:6px 18px 4px}
-.r{display:grid;grid-template-columns:96px 1fr;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--line);animation:rise .5s var(--ease) both;animation-delay:calc(.7s + var(--i) * .06s)}
+.r{display:grid;grid-template-columns:96px 1fr auto;gap:10px;align-items:baseline;padding:11px 0;border-bottom:1px dashed var(--line);animation:rise .5s var(--ease) both;animation-delay:calc(.7s + var(--i) * .06s)}
 .r:last-child{border-bottom:0}
 .r small{font-size:11.5px;font-weight:700;color:var(--muted)}
 .r b{font-size:15px;font-weight:700;line-height:1.4;overflow-wrap:anywhere}
@@ -304,6 +304,12 @@ button{font:inherit;color:inherit}
 .cta.kakao.pulse{animation:ringY 2s 1.6s ease-out infinite}
 @keyframes ringY{0%{box-shadow:0 0 0 0 rgba(254,229,0,.6)}70%,100%{box-shadow:0 0 0 14px rgba(254,229,0,0)}}
 .linkbtn{border:0;background:none;color:rgba(255,255,255,.75);font-size:13px;font-weight:600;padding:4px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;justify-self:center}
+button.r{font:inherit;color:inherit;text-align:left;background:none;border:0;border-bottom:1px dashed var(--line);width:100%;cursor:pointer;transition:background .2s}
+button.r:hover,button.r:focus-visible{background:#F7F4EE}
+.chgpath{position:absolute;top:14px;right:14px;z-index:1;border:0;border-radius:999px;padding:6px 11px;background:rgba(255,255,255,.14);color:#fff;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer}
+.chgpath:hover{background:rgba(255,255,255,.24)}
+.edithint{margin:10px 0 0;text-align:center;color:rgba(255,255,255,.78);font-size:12.5px;font-weight:600}
+.ed{font-style:normal;margin-left:5px;color:var(--coral);opacity:.8;font-size:10px;letter-spacing:0}
 .backnote{margin:0;padding:13px 12px;border-radius:14px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);font-size:14px;font-weight:600;text-align:center;line-height:1.7}
 .backnote b{color:var(--gold-soft);font-weight:800}
 .backnote .x{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:#fff;color:var(--navy);font-size:12px;font-weight:800;vertical-align:1px}
@@ -767,6 +773,7 @@ button{font:inherit;color:inherit}
       const sr = stage.getBoundingClientRect(), r = old.getBoundingClientRect();
       Object.assign(old.style, {position:'absolute', left:(r.left-sr.left)+'px', top:(r.top-sr.top)+'px', width:r.width+'px', height:r.height+'px', margin:'0', zIndex: back ? '0' : '3', pointerEvents:'none'});
       animOut(old, back).then(() => old.remove());
+      setTimeout(() => old.remove(), 900);   // 애니메이션이 멈춰도(백그라운드 등) 이전 카드는 반드시 정리
     }
     stage.appendChild(el); current = el;
     animIn(el, back); bind(el);
@@ -776,7 +783,7 @@ button{font:inherit;color:inherit}
 
   // idx: -1 인트로 · 0 과정 선택 · 1..N 분기 질문 · N+1 마지막 단계 · N+2 결과
   function go(i, back, origin){
-    state.idx = i; state.locked = false;
+    clearTimeout(state.timer); state.idx = i; state.locked = false;
     if (current) Sound.whoosh();
     hideCheer(); setProgress(i); setNum(i, back);
     if (i < 0) { applyScene(NAVY, 0, origin); mount(introHTML(), back); floaties(true); return; }
@@ -819,7 +826,7 @@ button{font:inherit;color:inherit}
         <div class="card" role="group" aria-labelledby="q${i}">
           <div class="eyebrow"><span class="dot"></span>${q.tag}<i>${isPath ? q.name : esc(BR().short + ' · ' + q.name)}</i></div>
           <h2 class="q" id="q${i}" tabindex="-1">${words(q.title)}</h2>
-          <p class="hint">${esc(q.hint)}</p>
+          <p class="hint">${esc(state.editing ? '다시 고르면 바로 결과로 돌아가요' : q.hint)}</p>
           <div class="opts ${q.layout}">
             ${q.opts.map((o,k)=>`<button class="opt${o.wide || (q.layout==='grid' && k === q.opts.length-1 && q.opts.length % 2) ? ' wide' : ''}${o.u ? ' soft' : ''}${picked===o?' on':''}" style="--i:${k}" data-k="${k}">
               ${optVisual(o)}<span class="txt"><span class="lbl">${esc(o.l)}</span><span class="sub">${esc(o.s)}</span>${o.b ? `<span class="tag">${esc(o.b)}</span>` : ''}</span>
@@ -876,19 +883,21 @@ button{font:inherit;color:inherit}
 
   const needsPaste = () => state.kakao || !(state.contact && state.agree);
   function finish(){
-    mount(`<div class="view printing" role="status"><div class="bar"><i></i></div><p>${esc(BR().short)} 경로를 정리하고 있어요</p><small>답변 ${NQ()}개를 프로필로 묶는 중</small></div>`);
+    const edited = state.editing; state.editing = false;
+    if (edited) submit(true);
+    if (!edited) mount(`<div class="view printing" role="status"><div class="bar"><i></i></div><p>${esc(BR().short)} 경로를 정리하고 있어요</p><small>답변 ${NQ()}개를 프로필로 묶는 중</small></div>`);
     setTimeout(() => {
       const el = mount(profileHTML());
-      setTimeout(celebrate, reduce ? 0 : 700);
+      if (!edited) setTimeout(celebrate, reduce ? 0 : 700);
       if (!needsPaste()) setTimeout(() => sealHit(el), reduce ? 0 : 1720);
       else setTimeout(() => { const f = el.querySelector('.final'); if (f) f.scrollIntoView({block:'end', behavior: reduce ? 'auto' : 'smooth'}); }, reduce ? 0 : 2000);
-    }, reduce ? 300 : 1500);
+    }, edited ? 0 : (reduce ? 300 : 1500));
   }
   function profileHTML(){
     const d = new Date(), date = `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
     const remind = needsPaste();
     const rows = qs().map((q,k) => { const a = state.answers[akey(q)];
-      return `<div class="r" style="--i:${k}"><small>${esc(q.name)}</small><b class="${!a || a.u ? 'u' : ''}">${esc(val(q))}</b></div>`; }).join('');
+      return `<button type="button" class="r" style="--i:${k}" data-edit="${k+1}" aria-label="${esc(q.name)} 다시 고르기"><small>${esc(q.name)}</small><b class="${!a || a.u ? 'u' : ''}">${esc(val(q))}</b><i class="ed">✎</i></button>`; }).join('');
     const manual = `<div class="manual" id="manual" hidden>
         <p>자동 복사가 안 되면 아래 글을 길게 눌러 <b>전체 선택 → 복사</b>해 주세요.</p>
         <textarea class="copybox" id="copyText" readonly aria-label="복사할 진단 답변"></textarea>
@@ -917,6 +926,7 @@ button{font:inherit;color:inherit}
     </div>`;
     return `<div class="view done"><div class="profile${remind ? ' pending' : ''}" aria-label="진단 결과 프로필">
       <div class="ph">
+        <button type="button" class="chgpath" data-edit="0">과정 바꾸기 ✎</button>
         <span class="k">UK STUDY PROFILE</span>
         <h3>${esc(BR().label)}</h3>
         <span class="who">${esc(state.name ? state.name + '님의 영국 유학 경로' : '나의 영국 유학 경로')}</span>
@@ -927,6 +937,7 @@ button{font:inherit;color:inherit}
         <div class="seal" aria-hidden="true"><span><small>SINCHON</small><b>✓</b><small>READY</small></span></div>
       </div>
     </div>
+    <p class="edithint">✎ 항목을 누르면 다시 고를 수 있어요</p>
     ${after}</div>`;
   }
 
@@ -936,6 +947,7 @@ button{font:inherit;color:inherit}
     el.addEventListener('click', e => {
       const b = e.target.closest('button'); if (!b) return;
       if (b.dataset.k !== undefined) return pick(b, +b.dataset.k, e);
+      if (b.dataset.edit !== undefined) { state.editing = true; Sound.tick(); go(+b.dataset.edit, true, center(b)); return; }
       if (b.dataset.chip) { b.classList.toggle('on'); state.chips.has(b.dataset.chip) ? state.chips.delete(b.dataset.chip) : state.chips.add(b.dataset.chip); popAt(b, 6); Sound.tick(); buzz(6); return; }
       const act = b.dataset.act;
       if (act === 'start') { Sound.unlock(); Sound.pop(); buzz(10); popAt(b, 16); go(0, false, center(b)); }
@@ -945,7 +957,7 @@ button{font:inherit;color:inherit}
       if (act === 'skip') { state.chips.clear(); state.memo = ''; state.contact = ''; state.agree = false; complete(b); }
       if (act === 'copy') copy();
       if (act === 'kshare') kshare();
-      if (act === 'restart') { Object.assign(state, {branch:null, answers:{}, name:'', contact:'', agree:false, kakao:false, nudged:false, memo:''}); state.chips.clear(); go(-1, true, center(b)); }
+      if (act === 'restart') { Object.assign(state, {editing:false, branch:null, answers:{}, name:'', contact:'', agree:false, kakao:false, nudged:false, memo:''}); state.chips.clear(); go(-1, true, center(b)); }
     });
     const nm = el.querySelector('#nm'), memo = el.querySelector('#memo'), ct = el.querySelector('#ct');
     if (nm) nm.addEventListener('input', () => state.name = nm.value.trim());
@@ -957,12 +969,12 @@ button{font:inherit;color:inherit}
   }
 
   function pick(btn, k, e){
-    if (state.locked) return;
-    state.locked = true;
+    if (state.locked && btn.classList.contains('on')) return;
+    clearTimeout(state.timer); state.locked = true;
     const i = state.idx, isPath = i === 0;
     const q = isPath ? PATH_Q : qs()[i-1], o = q.opts[k];
     if (isPath){
-      if (state.branch !== o.branch){ state.branch = o.branch; state.chips.clear(); }
+      if (state.branch !== o.branch){ state.branch = o.branch; state.chips.clear(); state.editing = false; }
     } else state.answers[akey(q)] = o;
     const r = btn.getBoundingClientRect();
     const tap = (e && e.clientX) ? {x:e.clientX, y:e.clientY} : center(btn);
@@ -970,7 +982,7 @@ button{font:inherit;color:inherit}
     if (isPath) app.style.setProperty('--deep', branchScene(1).deep);
     const wrap = btn.parentElement;
     wrap.querySelectorAll('.opt').forEach(x => x.classList.remove('on'));
-    btn.classList.add('on'); wrap.classList.add('dim','locked');
+    btn.classList.add('on'); wrap.classList.add('dim');
     burstAt(tap.x, tap.y, 10, 80); Sound.pop(); buzz(12);
     let main, sub = '';
     if (isPath){
@@ -981,8 +993,9 @@ button{font:inherit;color:inherit}
       main = o.u ? UNSURE_CHEER : (q.react && q.react[k]) || CHEERS[cheerN++ % CHEERS.length];
       sub = left === 0 ? '마지막 한 장만 남았어요!' : left === 1 ? '거의 다 왔어요 🏁' : (i === Math.ceil(NQ()/2) ? '절반 왔어요 🙌' : '');
     }
+    if (state.editing){ main = '수정했어요 ✓'; sub = '결과로 돌아갈게요'; }
     cheer(main, sub);
-    setTimeout(() => go(i + 1, false, tap), NEXT_DELAY);
+    state.timer = setTimeout(() => go(state.editing ? NQ() + 2 : i + 1, false, tap), NEXT_DELAY);
   }
 
   $('back').addEventListener('click', e => { if (state.idx >= 0) go(state.idx - 1, true, center(e.currentTarget)); });
@@ -1013,13 +1026,13 @@ button{font:inherit;color:inherit}
     }
     complete(b);
   }
-  function complete(b){ submit(); go(NQ() + 2, false, center(b)); }
+  function complete(b){ if (!state.editing) submit(); go(NQ() + 2, false, center(b)); }
 
   // Formspree 전송: 화면 흐름은 기다리지 않고 백그라운드로 보냄 (실패해도 고객 화면에는 영향 없음)
-  function submit(){
+  function submit(edited){
     const share = state.contact && state.agree;
     const fd = new FormData();
-    fd.append('_subject', `[정규유학 진단] ${BR().short} · ${state.name || '이름 미기재'} · ${share ? state.contact : (state.kakao ? '카톡 상담 중' : '연락처 없음')}`);
+    fd.append('_subject', `${edited ? '(수정) ' : ''}[정규유학 진단] ${BR().short} · ${state.name || '이름 미기재'} · ${share ? state.contact : (state.kakao ? '카톡 상담 중' : '연락처 없음')}`);
     fd.append('폼_종류', '정규유학 사전 진단');
     fd.append('과정', BR().label);
     fd.append('이름', state.name || '-');
