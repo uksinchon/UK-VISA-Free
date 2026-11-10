@@ -241,7 +241,7 @@ function Mockup({ p }: { p: Palette }) {
             color: p.textOnLight,
           }}
         >
-          영국유학센터 신촌지사는 영국 40여개 대학의 공식 파트너로, 학생의
+          영국유학센터 신촌점은 영국 40여개 대학의 공식 파트너로, 학생의
           지원·입학·비자 절차를 함께 진행합니다.
         </div>
         <div className="grid grid-cols-2 gap-3">

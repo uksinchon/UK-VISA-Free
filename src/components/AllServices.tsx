@@ -3,7 +3,7 @@ const premiumVisas = [
     icon: "🎓",
     title: "비파트너 대학 학생비자",
     en: "Student Visa (Non-Partner)",
-    desc: "신촌지사 파트너십이 아닌 대학에서 오퍼를 받으신 분",
+    desc: "신촌점 파트너십이 아닌 대학에서 오퍼를 받으신 분",
     price: "₩350,000~",
     tag: "BEST",
   },
@@ -58,7 +58,7 @@ export default function AllServices() {
             Premium Visa Agency
           </span>
           <h2 className="text-3xl md:text-4xl font-bold mt-2 text-gray-900">
-            영국유학센터 신촌지사 유료 비자 지원
+            영국유학센터 신촌점 유료 비자 지원
           </h2>
           <p className="text-gray-500 mt-3">
             6종 비자를 전문 매니저가 1:1로 신청을 지원합니다 (₩165,000부터)
@@ -115,7 +115,7 @@ export default function AllServices() {
               파트너십 대학에서 오퍼를 받으셨나요?
             </p>
             <p className="text-sm text-gray-600 leading-relaxed">
-              영국유학센터 신촌지사 파트너십 대학 학생은{" "}
+              영국유학센터 신촌점 파트너십 대학 학생은{" "}
               <a
                 href="#free"
                 className="text-blue-600 font-bold underline underline-offset-2 hover:text-blue-700"

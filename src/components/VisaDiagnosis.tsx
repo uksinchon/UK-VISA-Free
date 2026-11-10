@@ -74,7 +74,7 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Academic Visitor Visa (방문교수)",
-      desc: "방문 교수 / 학자로 입국하시는 경우, 영국유학센터 신촌지사의 유료 지원으로 도와드립니다.",
+      desc: "방문 교수 / 학자로 입국하시는 경우, 영국유학센터 신촌점의 유료 지원으로 도와드립니다.",
       cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
@@ -85,7 +85,7 @@ function diagnose(a: Answers): {
     return {
       tier: "premium",
       visa: "Temporary Work - GAE Visa (단기취업)",
-      desc: "Government Authorised Exchange 비자 신청은 신촌지사의 유료 지원 서비스로 진행됩니다.",
+      desc: "Government Authorised Exchange 비자 신청은 신촌점의 유료 지원 서비스로 진행됩니다.",
       cta: "유료 지원 상담 신청",
       ctaHref: "#contact",
       badge: "💎 PREMIUM",
@@ -118,7 +118,7 @@ function diagnose(a: Answers): {
     return {
       tier: "free",
       visa: "Student Visa (파트너십 대학)",
-      desc: "영국유학센터 신촌지사 파트너십 대학 학생비자는 무료로 전 과정을 지원해 드립니다.",
+      desc: "영국유학센터 신촌점 파트너십 대학 학생비자는 무료로 전 과정을 지원해 드립니다.",
       cta: "무료 신청하기",
       ctaHref: "#free",
       badge: "📚 FREE",
@@ -140,7 +140,7 @@ function diagnose(a: Answers): {
     return {
       tier: "free",
       visa: "유학 상담 + 대학 매칭",
-      desc: "오퍼를 받기 전이라면, 영국유학센터 신촌지사의 무료 유학 상담으로 시작하세요!",
+      desc: "오퍼를 받기 전이라면, 영국유학센터 신촌점의 무료 유학 상담으로 시작하세요!",
       cta: "무료 유학 상담 신청",
       ctaHref: "#free",
       badge: "📚 FREE",

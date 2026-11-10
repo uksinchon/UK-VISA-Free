@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | 영국학생비자 지원센터",
   },
   description:
-    "영국 대학 합격 후 비자 신청, 프리세셔널 등록, 출국 준비까지 모든 과정을 무료로 도와드립니다. British Council 공인 에이전트, 영국유학센터 신촌지사가 운영합니다. 2006년부터 20년, 40여 개 영국 대학 공식 파트너.",
+    "영국 대학 합격 후 비자 신청, 프리세셔널 등록, 출국 준비까지 모든 과정을 무료로 도와드립니다. British Council 공인 에이전트, 영국유학센터 신촌점이 운영합니다. 2006년부터 20년, 40여 개 영국 대학 공식 파트너.",
   keywords: [
     "영국학생비자",
     "영국학생비자 지원센터",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     "프리세셔널",
     "영국 비자",
     "UK Student Visa",
-    "영국유학센터 신촌지사",
+    "영국유학센터 신촌점",
     "방문교수 비자",
     "Academic Visitor",
     "GAE 비자",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
     "비파트너 대학 학생비자",
     "안식년 비자",
   ],
-  authors: [{ name: "영국학생비자 지원센터 by 영국유학센터 신촌지사" }],
-  creator: "영국유학센터 신촌지사",
+  authors: [{ name: "영국학생비자 지원센터 by 영국유학센터 신촌점" }],
+  creator: "영국유학센터 신촌점",
   publisher: "영국학생비자 지원센터",
   formatDetection: {
     email: false,
@@ -107,7 +107,7 @@ const jsonLd = {
       "@type": "Organization",
       "@id": `${SITE_URL}#organization`,
       name: "영국학생비자 지원센터",
-      alternateName: "영국유학센터 신촌지사",
+      alternateName: "영국유학센터 신촌점",
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
       description:

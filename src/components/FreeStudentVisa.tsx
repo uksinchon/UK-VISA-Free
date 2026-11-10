@@ -62,7 +62,7 @@ export default function FreeStudentVisa() {
             파트너십 대학 <span className="text-blue-600">무료 학생비자 지원</span>
           </h2>
           <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-            영국유학센터 신촌지사 파트너십 대학에서 오퍼를 받으셨다면,
+            영국유학센터 신촌점 파트너십 대학에서 오퍼를 받으셨다면,
             비자 신청부터 출국까지 100% 무료로 지원해 드립니다.
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function FreeStudentVisa() {
         <div className="bg-white border border-blue-100 rounded-2xl p-7 md:p-10">
           <div className="text-center mb-6">
             <h3 className="font-bold text-gray-900 text-xl mb-2">
-              🎓 신촌지사 파트너십 대학 (일부)
+              🎓 신촌점 파트너십 대학 (일부)
             </h3>
             <p className="text-sm text-gray-500">
               아래 대학에서 오퍼를 받으신 분은 무료 신청 대상입니다

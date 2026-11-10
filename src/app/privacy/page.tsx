@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "개인정보 처리방침 | 영국학생비자 지원센터",
   description:
-    "영국학생비자 지원센터(ukvisa.kr) 개인정보 처리방침. 영국유학센터 신촌지사가 운영하는 영국 학생비자 무료 지원 서비스의 개인정보 보호 정책입니다.",
+    "영국학생비자 지원센터(ukvisa.kr) 개인정보 처리방침. 영국유학센터 신촌점이 운영하는 영국 학생비자 무료 지원 서비스의 개인정보 보호 정책입니다.",
 };
 
 const internalRetention: [string, string, string][] = [
@@ -158,7 +158,7 @@ export default function PrivacyPage() {
               개인정보 처리방침
             </h1>
             <p className="text-sm text-gray-300">
-              영국학생비자 지원센터(ukvisa.kr) · 영국유학센터 신촌지사
+              영국학생비자 지원센터(ukvisa.kr) · 영국유학센터 신촌점
             </p>
           </div>
         </section>
@@ -167,7 +167,7 @@ export default function PrivacyPage() {
         <article className="max-w-4xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-gray-700 leading-relaxed">
           <div className="bg-orange-50/50 border border-accent/15 rounded-2xl p-5 md:p-6 text-sm">
             <p>
-              영국유학센터 신촌지사(이하 &ldquo;회사&rdquo;)는 「개인정보 보호법」 제30조에 따라
+              영국유학센터 신촌점(이하 &ldquo;회사&rdquo;)는 「개인정보 보호법」 제30조에 따라
               정보주체(이용자)의 개인정보를 보호하고, 이와 관련한 고충을 신속하고
               원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다.
             </p>
@@ -422,15 +422,15 @@ export default function PrivacyPage() {
                 <strong>성명:</strong> 이정민
               </li>
               <li>
-                <strong>직책:</strong> 영국유학센터 신촌지사 지사장
+                <strong>직책:</strong> 영국유학센터 신촌점 대표
               </li>
               <li>
                 <strong>연락처:</strong> 전화 02-393-1030 / 이메일{" "}
                 <a
-                  href="mailto:info@ukvisa.kr"
+                  href="mailto:j.lee@ukcentre.co.kr"
                   className="text-accent hover:underline"
                 >
-                  info@ukvisa.kr
+                  j.lee@ukcentre.co.kr
                 </a>{" "}
                 / 팩스 02-393-5021
               </li>
@@ -441,7 +441,7 @@ export default function PrivacyPage() {
           <SectionHeading n={11}>개인정보 처리방침 변경</SectionHeading>
           <p className="text-sm">
             이 개인정보 처리방침은{" "}
-            <strong>2026년 5월 18일</strong>부터 적용됩니다.
+            <strong>2026년 11월 10일</strong>부터 적용됩니다. (이전 방침: 2026년 5월 18일 시행)
           </p>
           <p className="text-sm mt-2 text-gray-600">
             본 방침의 내용 추가, 삭제 및 수정이 있을 시에는 변경 사항의 시행 7일

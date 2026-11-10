@@ -36,7 +36,7 @@ export default function ServiceTiers() {
             무료 vs 프리미엄 서비스 비교
           </h2>
           <p className="text-gray-500 mt-3">
-            영국유학센터 신촌지사의 두 가지 서비스를 한눈에 비교해 보세요
+            영국유학센터 신촌점의 두 가지 서비스를 한눈에 비교해 보세요
           </p>
         </div>
 

@@ -15,7 +15,7 @@ export default function WhyFree() {
         {/* Explanation */}
         <div className="bg-gradient-to-br from-orange-50/60 to-white border border-accent/15 rounded-3xl p-7 md:p-10 mb-8">
           <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-            영국유학센터 신촌지사는{" "}
+            영국유학센터 신촌점은{" "}
             <strong className="text-accent">영국 40여개 대학의 공식 파트너</strong>
             로, 학생의 지원·입학·비자 절차를 대학과 함께 협력 체계 안에서
             진행해왔습니다.

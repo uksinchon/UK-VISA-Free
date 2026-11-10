@@ -19,7 +19,7 @@ export function generateMetadata({
   if (!visa) return { title: "Not Found" };
   return {
     title: visa.title,
-    description: `${visa.tagline} · 서비스 이용료 ${visa.price} · 영국학생비자 지원센터 by 영국유학센터 신촌지사`,
+    description: `${visa.tagline} · 서비스 이용료 ${visa.price} · 영국학생비자 지원센터 by 영국유학센터 신촌점`,
     alternates: {
       canonical: `/visa/${visa.slug}`,
     },

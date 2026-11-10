@@ -1,7 +1,7 @@
 # 영국학생비자센터 (UK Visa Free Support)
 
 영국 학생비자 무료 대행 서비스 사이트 — **ukvisa.kr**
-영국유학센터 신촌지사 운영 · British Council 공인 에이전트
+영국유학센터 신촌점 운영 · British Council 공인 에이전트
 
 ## 🛠️ 기술 스택
 

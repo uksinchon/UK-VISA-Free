@@ -8,8 +8,8 @@ const stats = [
 const timeline = [
   { year: "2006", event: "영국유학센터 설립" },
   { year: "2008", event: "주한영국문화원 영국전문유학원 자격시험 1위" },
-  { year: "2010", event: "영국유학센터 신촌지사 설립" },
-  { year: "2011", event: "주한영국문화원 영국전문유학원 자격시험 1위 (신촌지사)" },
+  { year: "2010", event: "영국유학센터 신촌점 설립" },
+  { year: "2011", event: "주한영국문화원 영국전문유학원 자격시험 1위 (신촌점)" },
   { year: "2012", event: "영국 주요 대학 공식 파트너십 확장" },
   { year: "2025", event: "누적 학생비자 발급 지원 1,000건 돌파" },
   { year: "2026", event: "공식 파트너 40여 개 대학 운영 중" },
@@ -88,7 +88,7 @@ export default function TrustEvidence() {
             20년 연혁
           </h3>
           <p className="text-center text-xs text-gray-400 mb-8">
-            영국유학센터 신촌지사의 주요 마일스톤
+            영국유학센터 신촌점의 주요 마일스톤
           </p>
           <div className="relative">
             {/* Vertical line on mobile / horizontal on desktop */}

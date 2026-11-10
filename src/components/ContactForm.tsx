@@ -26,7 +26,7 @@ export default function ContactForm() {
             </h2>
             <p className="text-gray-400 leading-relaxed mb-8">
               영국유학·비자에 대한 궁금한 점이 있으시면 언제든 문의해 주세요.
-              영국유학센터 신촌지사 전문 상담사가 친절하게 답변드립니다.
+              영국유학센터 신촌점 전문 상담사가 친절하게 답변드립니다.
             </p>
 
             <div className="space-y-4">
@@ -62,7 +62,7 @@ export default function ContactForm() {
                   <span className="text-2xl">📍</span>
                 </div>
                 <div>
-                  <p className="text-gray-400 text-sm">신촌지사 위치</p>
+                  <p className="text-gray-400 text-sm">신촌점 위치</p>
                   <p className="text-white font-bold">서울 서대문구 신촌로 134</p>
                 </div>
               </div>
